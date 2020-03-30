@@ -1,8 +1,9 @@
 var canvas = document.querySelector('canvas')
 
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+canvas.width = 1200
+canvas.height = 800
 
+let Color_Map = new Map();
 var c = canvas.getContext('2d')
 
 function Dot(x,y){
@@ -23,8 +24,10 @@ function Arrow(x,y){
     c.lineTo(this.x, this.y)
     c.fill()
 }
-function f(){
+function Control_(i){
     //instruction 31-26
+    Color_end()
+    Color(i)
     c.font = "20px Arial"
     c.fillText("Instruction [31-26]",238,268,120)
     c.beginPath()
@@ -33,11 +36,14 @@ function f(){
     c.lineTo(234,396);
     c.stroke();
     var a=new Arrow(355,283);
+    Color_end()
 }
-f();
-function h(){
+// Control_(Color_Map.get(0));
+
+function RS1_(i){
     //instruction 25-21
     c.font = "20px Arial"
+    Color(i)
     c.fillText("Instruction [25-21]",238,387,120)
     c.beginPath()
     c.moveTo(234,396);  
@@ -45,10 +51,13 @@ function h(){
     c.stroke();
     var dot = new Dot(234,397)
     var a=new Arrow(393,401);
+    Color_end();
 }
-h();
-function i(){
+// RS1_(Color_Map.get(0));
+
+function RS2_(i){
 //instruction 20-16
+Color(i);
 c.font = "20px Arial"
 c.fillText("Instruction [20-16]",238,427,120)
 c.beginPath()
@@ -57,10 +66,13 @@ c.beginPath()
     c.stroke();
     var dot = new Dot(233,433)
     var a=new Arrow(394,437);
+    Color_end();
 }
-i();
-function j(){
+// RS2_(Color_Map.get(0));
+
+function RD_(i){
 //instruction 15-11
+Color(i);
 c.font = "20px Arial"
 c.fillText("Instruction [15-11]",238,505,120)
     c.beginPath()
@@ -69,47 +81,61 @@ c.fillText("Instruction [15-11]",238,505,120)
     c.stroke();
     var dot = new Dot(234,515)
     var a=new Arrow(355,520);
+    Color_end();
 }
-j();
-function k(){
+// RD_(Color_Map.get(0));
+
+function Last16_(i){
     //instruction 15-0
+    Color(i);
     c.font = "20px Arial"
     c.fillText("Instruction [15-0]",238,612,120)
     
     c.fillText("16",427,606,120)
     c.beginPath()
-    c.moveTo(424,616);
+    c.moveTo(234,515);
+    c.lineTo(234,616);
+    c.lineTo(424,616);
     c.lineTo(435,628);
     c.moveTo(233,622);  
     c.lineTo(445,622);
     c.stroke();
     var dot = new Dot(233,622)
     var a=new Arrow(445,627);
+    Color_end()
 }
-k();
-function l(){
+// Last16_(Color_Map.get(0));
+
+function RS1_RS2_RD(i){
     //line combine instrctions in ID
     c.beginPath();
+    Color(i);
     c.moveTo(234,396);
-    c.lineTo(234,622);
+    c.lineTo(234,515);
+    // c.lineTo(234,622);
     c.stroke();
+    Color_end();
 }
-l();
-function m(){
+// RS1_RS2_RD(Color_Map.get(0));
+
+function RS2_MUX(i){
     //from instruction 20-16 to mux in IF
     c.beginPath();
+    Color(i);
     c.moveTo(330,435);
     c.lineTo(330,466);
     c.lineTo(356,465);
     c.stroke();
     var dot = new Dot(330,434)
     var a=new Arrow(356,470);
-    
+    Color_end();
 }
-m();
-function o(){
+// RD_MUX(Color_Map.get(0));
+
+function MUXIF(i){
     //mux in IF
     c.beginPath();
+    Color(i);
     c.arc(380,464,14,Math.PI,false)
     c.lineTo(394,520)
     c.moveTo(366,464)
@@ -124,29 +150,37 @@ function o(){
     
     c.stroke();
     var a=new Arrow(396,489);
+    Color_end();
 }
-o();
-function controll(){
+// MUXIF(Color_Map.get(0));
+
+function control(i){
+    Color(i);
     c.font = "18px Arial"
     c.fillText("Controll",365,285,60)
     c.moveTo(427,277)
     c.ellipse(396,285,33,78,0,Math.PI*2,false);
     c.stroke();
+    Color_end()
 }
-controll();
-function signExtend(){
+// control(Color_Map.get(0));
+
+function signExtendLW(i){
+    Color(i);
     c.beginPath();
-    c.moveTo(513,622)
+    c.moveTo(513,622);
     c.ellipse(484,622,29,48,0,Math.PI*2,false)
     c.font = "15px Arial"
     c.fillText("Sign-",467,617)
     c.fillText("extend",463,637)
     c.stroke();
-    
+    Color_end();
 }
-signExtend();
-function p(){
+// signExtendLW(Color_Map.get(0));
+
+function signExtendLW_shift(i){
     //line from sign extend to shift
+    Color(i);
     c.beginPath();
     c.lineTo(567,621)
     c.lineTo(567,195)
@@ -157,29 +191,38 @@ function p(){
     c.lineTo(515,622)
     c.font = "20px Arial"
     c.fillText("32",532,608,120)
-    c.fillText("RegWrite",442,351,60)
     c.stroke()
-    var d=new Arrow(572,200)
+    var d=new Arrow(572,200);
+    Color_end();
 }
-p();
-function linep(){
+// signExtendLW_shift(Color_Map.get(0));
+
+function signExtendLW_MUX(i){
+    Color(i);
+    c.beginPath();
     c.moveTo(566,535);
     c.lineTo(580,535);
     c.stroke();
     var arrow=new Arrow(580,540);
     var dot=new Dot(566,535);
+    Color_end();
 }
-linep();
-function readData1(){
+// signExtendLW_MUX(Color_Map.get(0));
+
+function ReadData1_(i){
 //line from register in ID to ALU IN ex
+    Color(i);
     c.beginPath();
     c.moveTo(541,421);
     c.lineTo(627,421);
     c.stroke();
     var arrow=new Arrow(627,425);
+    Color_end()
 }
-readData1();
-function rectangleID(){
+// ReadData1_(Color_Map.get(0));
+
+function RegisterFile(i){
+    Color(i);
     c.beginPath();
     c.rect(404,373,138,187)
     c.font="15px Arial";
@@ -198,10 +241,13 @@ function rectangleID(){
     c.fillText("data1",496,432,40)
     
     c.stroke();
+    Color_end();
 }
-rectangleID();
-function liney(){
+// RegisterFile(Color_Map.get(0));
+
+function Controll_MUXIF(i){
     //line from mux to control in IF
+    Color(i);
     c.font="18px Arial";
     c.fillText("RegDst",442,210,120)
     c.beginPath();
@@ -214,9 +260,12 @@ function liney(){
     c.lineTo(414,216)
     
     c.stroke()
+    Color_end();
 }
-liney();
-function read2(){
+// Controll_MUXIF(Color_Map.get(0));
+
+function ReadData2_MUXID(i){
+    Color(i);
     //line from register to mux(from ID TO EX)
     c.beginPath();
     c.moveTo(541,485)
@@ -224,23 +273,31 @@ function read2(){
     
     c.stroke()
     var arrow = new Arrow(580,490)
-    
+    Color_end();
 }
-read2();
-function lineb(){
+// ReadData2_MUXID(Color_Map.get(0));
+
+function RegWrite(i){
+    Color(i);
     c.moveTo(413,355);
     c.lineTo(473,355);
-    c.lineTo(473,371)
-
+    c.lineTo(473,371);
+    c.fillText("RegWrite",442,351,60)
     c.stroke();
+    Color_end();
 }
-lineb();
-function linec(){
+// RegWrite(Color_Map.get(0)); 
+
+function Last5_(i){
     //instruction 5-0
+    Color(i);
     c.beginPath()
     c.font = "20px Arial"
     c.fillText("Instruction [5-0]",417,698,120)
-    c.moveTo(408,622)
+    c.moveTo(234,515);
+    c.lineTo(234,622)
+    c.lineTo(408,622)
+    // c.moveTo(408,622)
     c.lineTo(408,705)
     c.lineTo(580,706)
     c.lineTo(580,631)
@@ -250,12 +307,13 @@ function linec(){
     var x=new Dot(408,622);
     c.font = "20px Arial"
     c.fillText("Instruction [5-0]",417,698,120)
-    
-
+    Color_end();
 }
-linec();
-function linet(){
+// Last5_(Color_Map.get(0));
+
+function ALUOp(i){
     //line ALUOp from control to ALUcontrol
+    Color(i);
     c.font = "18px Arial"
     c.fillText("ALUOp",442,292,60);
     c.beginPath();
@@ -265,11 +323,13 @@ function linet(){
     c.lineTo(557,296)
     c.lineTo(432,296)
     c.stroke()
+    Color_end();
 }
-linet();
+// ALUOp(Color_Map.get(0));
 
 
-function rectangleMEM(){
+function Memory(i){
+    Color(i);
     c.beginPath();
     //rect
     c.strokeRect(758,433,112,167);
@@ -282,11 +342,13 @@ function rectangleMEM(){
     c.fillText("Data ",821,546,32)
     c.fillText("memory ",807,565,60)
     c.stroke()
+    Color_end();
 }
-rectangleMEM();
+// Memory(Color_Map.get(0));
 
 
-function arrowMEMRectangle(){
+function ReadData_MUXMEM(i){
+    Color(i);
    //arrow and line from reisterfile in mem to multiplexer
     c.beginPath();
     c.moveTo(871,480);
@@ -295,10 +357,12 @@ function arrowMEMRectangle(){
     
     c.stroke()
     var arrow = new Arrow(890,485)
+    Color_end();
 }
-arrowMEMRectangle();
+// ReadData_MUXMEM(Color_Map.get(0));
 
-function multiplexerMEM(){
+function MUXMEM(i){
+    Color(i);
     //multiplexer
     c.beginPath()
     c.moveTo(902,477);
@@ -314,11 +378,12 @@ function multiplexerMEM(){
     c.fillText("U ",910,515,15);
     c.fillText("X ",910,530,15);
     c.stroke();
+    Color_end();
 }
-multiplexerMEM();
+// MUXMEM(Color_Map.get(0));
 
-function lineToRegisterfilefromMEM(){
-
+function MUXMEM_RegisterFile(i){
+    Color(i);
     //line to registerfile FROM MEM MULTIPLEXER
     c.beginPath();
     c.moveTo(928,506)
@@ -332,14 +397,12 @@ function lineToRegisterfilefromMEM(){
     
     c.stroke();
     var arrow = new Arrow(395,540)
+    Color_end();
 }
-lineToRegisterfilefromMEM();
+// MUXMEM_RegisterFile(Color_Map.get(0));
 
-
-
-
-function ALU_Control(){
-
+function ALUControl(i){
+    Color(i);
     c.beginPath()
     c.ellipse(632,629,29,48,0,Math.PI*2,false)
     c.moveTo(679,514);
@@ -349,11 +412,13 @@ function ALU_Control(){
     c.fillText("ALU",617,625,30);
     c.fillText("control",606,643,52)
     c.stroke();
+    Color_end();
 }
-ALU_Control();
+// ALUControl(Color_Map.get(0));
 
-function MUX1(){
+function MUXID(i){
     //aside alu control
+    Color(i);
     c.beginPath();
     c.arc(602,482,13,0,Math.PI,true);
     c.stroke();
@@ -378,18 +443,24 @@ function MUX1(){
     c.fillText("X", 595, 530, 120);
     c.fill();
     c.fillText("1", 595, 545, 120);
+    Color_end();
 }
-MUX1();
-function arrowMuxToAluInEX(){
+// MUXID(Color_Map.get(0));
 
+function MUXID_ALUEX(i){
+    Color(i);
     c.beginPath();
     c.moveTo(615,507);
     c.lineTo(628,507);
     c.stroke();
     var arrow = new Arrow(628,512);
+    Color_end();
 }
-arrowMuxToAluInEX()
-function ALUInEX(){
+// MUXID_ALUEX(Color_Map.get(0))
+
+
+function ALUEX(i){
+    Color(i);
     c.beginPath();
     c.moveTo(637,403);
     c.lineTo(637,450);
@@ -411,38 +482,41 @@ function ALUInEX(){
     c.font="17px Arial";
     c.fillText("Zero", 689,449,150);
     c.fill();
+    Color_end();
 }
-ALUInEX();
-function x(){
+// ALUEX(Color_Map.get(0));
+
+function ALUEX_Memory(i){
+    Color(i)
     c.beginPath();
     c.moveTo(727,481);
     c.lineTo(750,480);
     c.stroke();
     
     var arrow = new Arrow(746,485);
-
+    Color_end()
 }
-x();
-function y(){
+// ALUEX_Memory(Color_Map.get(0));
+
+function MemWrite(i){
     //from the registerfile in MEM TO CONTROL
+    Color(i);
     c.beginPath();
     c.moveTo(812,434);
     c.lineTo(811,313);
     c.lineTo(429,313);
     c.stroke();
-}
-y();
-function z(){
-    //MEM write to CONTROL
     c.beginPath();
     c.font="18px Arial";
     c.fillText("MemWrite",442,309,120);
     c.fill();
+    Color_end();
 }
-z();
+// MemWrite(Color_Map.get(0));
 
-function a(){
+function MemtoReg(i){
     //MEMTOREG to CONTROL
+    Color(i)
     c.beginPath();
     c.moveTo(915,465);
     c.lineTo(915,276);
@@ -451,10 +525,13 @@ function a(){
     c.beginPath();
     c.fillText("MemtoReg",442,270,120);
     c.fill();
+    Color_end();
 }
-a();
-function b(){
+// MemtoReg(Color_Map.get(0));
+
+function ALUSrc(i){
     //ALUSrc from CONTROL to MUX
+    Color(i)
     c.beginPath();
     c.moveTo(602,469);
     c.lineTo(602,335);
@@ -463,19 +540,12 @@ function b(){
     c.beginPath();
     c.fillText("ALUSrc",442,330,120);
     c.fill();
+    Color_end();
 }
-b();
-function d(){
-    //from ALU IN EX to AND
-    c.beginPath();
-    c.moveTo(726,446);
-    c.lineTo(741,446);
-    c.lineTo(741,232);
-    c.lineTo(753,232);
-    c.stroke();
-}
-d();
-function and(){
+// ALUSrc(Color_Map.get(0));
+
+function And(i){
+    Color(i);
     c.beginPath();
     c.moveTo(726,446);
     c.lineTo(741,446);
@@ -490,9 +560,12 @@ function and(){
     c.lineTo(774,244);
 
     c.stroke();
+    Color_end();
 }
-and();
-function lineToAnd(){
+// And(Color_Map.get(0));
+
+function Branch(i){
+    Color(i);
     //line from control to and
     c.moveTo(752,210);
     c.lineTo(712,210);
@@ -502,10 +575,12 @@ function lineToAnd(){
     c.beginPath();
     c.fillText("Branch",442,229,120 );
     c.fill();
+    Color_end();
 }
-lineToAnd();
+// Branch(Color_Map.get(0));
 
-function n(){
+function ALUEX_MUXMEM(i){
+    Color(i);
     //from ALU IN EX TO MUX IN MEM
     c.beginPath();
     c.moveTo(738,481);
@@ -515,9 +590,12 @@ function n(){
     c.lineTo(894,532);
     c.stroke();
     var arrow = new Arrow(894,538);
+    Color_end();
 }
-n();
-function q(){
+// ALUEX_MUXMEM(Color_Map.get(0));
+
+function WriteData_(i){
+    Color(i);
     //from REGISTERFILE IN EX to REG MEM(WRITE DATA)
     c.beginPath();
     c.moveTo(550,485);
@@ -526,9 +604,12 @@ function q(){
     c.stroke();
     var arrow = new Arrow(750,572);
     var nab = new Dot(550,485);
+    Color_end();
 }
-q();
-function s(){
+// WriteData_(Color_Map.get(0));
+
+function MemRead(i){
+    Color(i);
     //MEMREAD FROM CONTROL 
     c.beginPath();
     c.moveTo(813,601);
@@ -540,11 +621,13 @@ function s(){
     c.beginPath();
     c.fillText("MemRead",442,252,120);
     c.fill();
+    Color_end();
 }
-s();
+// MemRead(Color_Map.get(0));
 
 //Line1
-function line1a(){
+function BranchMUX_PC(i){
+    Color(i);
     c.beginPath();
     c.moveTo(52,407);
     c.lineTo(46,407);
@@ -552,27 +635,30 @@ function line1a(){
     c.lineTo(833,20);
     c.lineTo(833,113);
     c.lineTo(812,113);
-    c.strokeStyle = 'black';
+    // c.strokeStyle = 'black';
     c.stroke();
     var dd=new Arrow(52,412);
+    Color_end();
 }
-line1a();
-
+// BranchMUX_PC(Color_Map.get(0));
 
 //PC
-function PC(){
+function PC(i){
+    Color(i);
     c.beginPath();
     c.rect(60,355,31,101);
     c.font = "15px Arial";
     c.fillText("PC",66,410);
     c.stroke();
+    Color_end();
 }
-PC();
+// PC(Color_Map.get(0));
 
 //Dot1
 // Dot(100,406);
 //Line2(instruction fetch line)
-function instructionfetchline(){
+function PC_RegisterFile(i){
+    Color(i)
     c.beginPath();
     c.moveTo(92,406);
     c.lineTo(100,406);
@@ -580,9 +666,12 @@ function instructionfetchline(){
     c.lineTo(107,406);
     c.stroke();
     var a=new Arrow(107,411);
+    Color_end();
 }
-instructionfetchline();
-function PC4line(){
+// PC_RegisterFile(Color_Map.get(0));
+
+function PC_Add(i){
+    Color(i);
     c.beginPath();
     c.moveTo(100,406);
     c.lineTo(100,73);
@@ -590,10 +679,12 @@ function PC4line(){
     c.stroke();
     var b=new Arrow(155,78);
     var ee=new Dot(100,406)
+    Color_end();
 }
-PC4line();
+// PC_Add(Color_Map.get("PC_Add"));
 // //ALU1
-function PC4ALU(){
+function Add(i){
+    Color(i);
     c.beginPath();
     c.moveTo(164,49);
     c.lineTo(164,96);
@@ -606,12 +697,12 @@ function PC4ALU(){
     c.font = "15px Arial";
     c.fillText("Add", 185, 120);
     c.stroke();
-    
-    
-    
+    Color_end(); 
 }
-PC4ALU();
-function addArrow(){
+// Add(Color_Map.get(0));
+
+function Default4(i){
+    Color(i);
     c.beginPath();
     c.moveTo(140,154);
     c.lineTo(158,154);
@@ -619,10 +710,12 @@ function addArrow(){
     c.font = "15px Arial";
     c.fillText("4",128,158.5);
     var v=new Arrow(158,159.5);
+    Color_end();
 }
-addArrow();
+// Default4(Color_Map.get(0));
 //ALU PC4 result
-function PC4result(){
+function Add_BranchMUX(i){
+    Color(i);
     c.beginPath();
     c.moveTo(221,113);
     c.lineTo(545,113);
@@ -636,12 +729,13 @@ function PC4result(){
     c.stroke();
     var ss=new Arrow(776,81.5);
     var xx=new Dot(545,102);
-    
+    Color_end();
 }
-PC4result();
+// Add_BranchMUX(Color_Map.get(0));
 
 // MUX1
-function BranchMUX(){
+function BranchMUX(i){
+    Color(i);
     c.beginPath();
     c.arc(798,77,13,Math.PI,0,false);
     c.stroke();
@@ -661,13 +755,14 @@ function BranchMUX(){
     c.fillText("M",792,100);
     c.fillText("U",792,115);
     c.fillText("X",792,130);
+    Color_end();
 }
-BranchMUX();
-function addALU(){
-    c.beginPath();
-    
-    
-    
+// BranchMUX(Color_Map.get(0));
+
+
+function BranchALU(i){
+    Color(i);
+    c.beginPath();    
     c.beginPath();
     c.moveTo(651,90);
     c.lineTo(650,136);
@@ -686,27 +781,34 @@ function addALU(){
     c.fillText("result", 702,160);
     
     c.stroke();
-    
-    
+    Color_end();
 }
-addALU();
-function fromALU(){
+// BranchALU(Color_Map.get(0));
+
+function BranchALU_BranchMUX(i){
+    Color(i);
     c.beginPath();
     c.moveTo(742,152);
     c.lineTo(777,152);
     c.stroke();
     var f=new Arrow(777,157);
+    Color_end()
 }
-fromALU();
-function lineToALU(){
+// BranchALU_BranchMUX(Color_Map.get(0));
+
+function _BranchALU(i){
+    Color(i);
     c.beginPath();
     c.moveTo(545,102);
     c.lineTo(643,102);
     c.stroke();
     var a=new Arrow(643,107);
+    Color_end()
 }
-lineToALU()
-function shift(){
+// _BranchALU(Color_Map.get(0))
+
+function Shift(i){
+    Color(i);
     c.beginPath();
     c.moveTo(632,194);
     c.lineTo(642,194);
@@ -719,23 +821,38 @@ function shift(){
     c.fillText("Shift", 590,185);
     c.font = "15px Arial";
     c.fillText("left 2", 590,210);
-
     var t=new Arrow(642,199);
+    Color_end();
 }
-shift();
+// Shift(Color_Map.get(0));
 
-function rectIF(){
+function MEMIF(i){
+    Color(i);
         c.beginPath();
         c.rect(120,385,96,141);
         c.moveTo(216,463);
         c.lineTo(234,463)
-        c.stroke();
+        // c.stroke();
         c.fillText("Read",128,402,36);
         c.fillText("address",128,418,55);
         c.fillText("Instruction",135,457,72);
         c.fillText("[31-0]",165,479,42);
         c.fillText("Instruction",127,500,81);
         c.fillText("memory",138,517,59);
+        c.stroke();
         var bb=new Dot(234,463)
+        Color_end()
 }
-rectIF();
+// MEMIF(Color_Map.get(0));
+
+function Color(i){
+    if(i==1){
+        c.strokeStyle = "blue";
+        c.fillStyle = "blue";
+    }
+
+}
+function Color_end(){
+    c.strokeStyle = "Black";
+    c.fillStyle = "Black";
+}
