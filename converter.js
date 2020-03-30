@@ -72,21 +72,25 @@ function convert(current_Inst){
     //                                       Add instruction
     // ---------------------------------------------------------------------------------------
     function add_instruction(){
-
+        c.clearRect(0,0,canvas.width,canvas.height)
+        Color_reset();
         stringOutput = "000000 " + B_Map.get(arrayInput[2]) +" "+ B_Map.get(arrayInput[3]) +" "+ 
-                                  B_Map.get(arrayInput[1]) + " 00000 " + B_Map.get(arrayInput[0])
-
+        B_Map.get(arrayInput[1]) + " 00000 " + B_Map.get(arrayInput[0])
+        
         myMap.set(arrayInput[1],myMap.get(arrayInput[2]) + myMap.get(arrayInput[3]) )
         
         document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
         document.getElementById("outputArea").value = stringOutput     
         Inst_Map.set(1,Inst_Map.get(1)+1);
+        Color_add();
     }
     // --------------------------------------------------------------------------------------
     //                                        Sub instruction
     // --------------------------------------------------------------------------------------
-
+    
     function sub_instruction(){
+        Color_reset();
+        c.clearRect(0,0,canvas.width,canvas.height)
         stringOutput = "000000 " + B_Map.get(arrayInput[2]) +" "+ B_Map.get(arrayInput[3]) +" "+ 
                                    B_Map.get(arrayInput[1]) + " 00000 " + B_Map.get(arrayInput[0])
 
@@ -96,12 +100,15 @@ function convert(current_Inst){
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
+       Color_sub();
     }
     // ---------------------------------------------------------------------------------------
     //                                      addi instruction
     // ---------------------------------------------------------------------------------------
 
     function addi_instruction(){
+        c.clearRect(0,0,canvas.width,canvas.height)
+        Color_reset();
         stringOutput = B_Map.get(arrayInput[0])+ " " + B_Map.get(arrayInput[2]) +" "+ 
                                     B_Map.get(arrayInput[1]) +" "+ 
                                    myMap.get(arrayInput[3]).toString(2).padStart(16,"0");
@@ -113,6 +120,8 @@ function convert(current_Inst){
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
     //    console.log(Inst_Map.get(1))
+    // Color_addi()
+    draw();
     }
     function lw_instruction(){
         stringOutput = B_Map.get(arrayInput[0]) +" "+ B_Map.get(arrayInput[3]) +" "
