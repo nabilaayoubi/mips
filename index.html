@@ -16,17 +16,40 @@
   <body>
     <div class = "outputText">
       <label for="outputArea">Output</label>
-      <input type="text" name = "outputArea" id = "outputArea" value="" disabled>
+      <textarea name="outputArea" id="outputArea" cols="70" rows="15"  disabled></textarea>
+      
     </div>
     
     <div class = "inputText">
       <label for="inputArea">Input</label>
-      <textarea name="inputArea" id="inputArea" cols="20" rows="10"></textarea>
-      <button onclick="convert(Inst_Map.get(1))" id ="Button">Click</button>
+      <textarea name="inputArea" id="inputArea" cols="75" rows="15" ></textarea>
+      <button onclick="convert(Inst_Map.get(1))" id ="Button">Simulate</button>
     </div>
     <div style="display: inline;">
       <canvas></canvas>
     </div>
+    
+    <div class="logo">
+      <img src="C:\Users\sma122\Desktop\final\img\newlogo.PNG" style="width:500px;height:160px;"/>
+    </div>
+    <div class="Startbutton">
+      <button  onclick="Start()" id="start"  style="width:80px;height:50px;">Next Instruction</button>
+    </div>
+    <div class="FullDatapath">
+      <button  onclick="Full_Datapath()" id="full"  style="width:80px;height:50px;">Full Datapath</button>
+    </div>
+   <div class="Firstbutton">
+     <button  onclick="First()" id="first"  style="width:50px;height:50px;">&#8249;&#8249;</button>
+   </div>
+   <div class="Nextbutton">
+    <button  onclick="Next()" id="next"  style="width:50px;height:50px;">&#8250;</button>
+  </div>
+   <div class="Previousbutton">
+    <button onclick=" Previous()" id="previous" style="width:50px;height:50px;">&#8249;</button>
+  </div>
+  <div class="Lastbutton">
+   <button onclick=" Last()" id="last" style="width:50px;height:50px;">&#8250;&#8250;</button>
+ </div>
     
     
     <div class = "Table">
@@ -168,12 +191,12 @@
       </div>
       
       
-      
+      <script src="Inst-Draw.js"></script>
       <script src="canvas.js"></script>
-      <!-- <script src="java.js"></script> -->
       <script src="converter.js"></script>
       <script src="map.js"></script>
-      <script src="Inst-Draw.js"></script>
+     
       
     </body>
     </html>
+   
