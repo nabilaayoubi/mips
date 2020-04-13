@@ -55,32 +55,41 @@ function RS1_(i){
 }
 // RS1_(Color_Map.get(0));
 
-function RS2_(i){
+function RS2_1(i){
 //instruction 20-16
 Color(i);
 c.font = "20px Arial"
 c.fillText("Instruction [20-16]",238,427,120)
 c.beginPath()
     c.moveTo(233,433);  
-    c.lineTo(394,433);
+    c.lineTo(330,433);
     c.stroke();
-    var dot = new Dot(233,433)
-    var a=new Arrow(394,437);
+    var dot = new Dot(233,433) 
     Color_end();
 }
+function RS2_2(i){
+    //instruction 20-16
+    Color(i);
+    c.beginPath()
+        c.moveTo(330,433);  
+        c.lineTo(394,433);
+        c.stroke();
+        var a=new Arrow(394,437);
+        Color_end();
+    }
 // RS2_(Color_Map.get(0));
 
 function RD_(i){
 //instruction 15-11
 Color(i);
-c.font = "20px Arial"
+c.font = "17px Arial"
 c.fillText("Instruction [15-11]",238,505,120)
     c.beginPath()
     c.moveTo(234,515);  
-    c.lineTo(355,515);
+    c.lineTo(350,515);
     c.stroke();
     var dot = new Dot(234,515)
-    var a=new Arrow(355,520);
+    var a=new Arrow(350,520);
     Color_end();
 }
 // RD_(Color_Map.get(0));
@@ -90,17 +99,25 @@ function Last16_(i){
     Color(i);
     c.font = "20px Arial"
     c.fillText("Instruction [15-0]",238,612,120)
-    
-    c.fillText("16",427,606,120)
     c.beginPath()
-    c.moveTo(234,515);
-    c.lineTo(234,616);
-    c.lineTo(424,616);
-    c.lineTo(435,628);
-    c.moveTo(233,622);  
-    c.lineTo(445,622);
+    c.moveTo(234,514);
+    c.lineTo(234,622);
+    c.lineTo(408,622);
     c.stroke();
     var dot = new Dot(233,622)
+    Color_end()
+
+}
+// /16
+function L16_(i){
+    Color(i);
+    c.fillText("16",427,606,120);
+    c.beginPath();
+    c.moveTo(408,622);
+    c.lineTo(445,622);
+    c.moveTo(423,616);
+    c.lineTo(435,628);
+    c.stroke();
     var a=new Arrow(445,627);
     Color_end()
 }
@@ -124,10 +141,10 @@ function RS2_MUX(i){
     Color(i);
     c.moveTo(330,435);
     c.lineTo(330,466);
-    c.lineTo(356,465);
+    c.lineTo(350,465);
     c.stroke();
     var dot = new Dot(330,434)
-    var a=new Arrow(356,470);
+    var a=new Arrow(350,470);
     Color_end();
 }
 // RD_MUX(Color_Map.get(0));
@@ -136,20 +153,23 @@ function MUXIF(i){
     //mux in IF
     c.beginPath();
     Color(i);
-    c.arc(380,464,14,Math.PI,false)
-    c.lineTo(394,520)
-    c.moveTo(366,464)
-    c.lineTo(366,518)
-    c.arc(380,517,14,Math.PI,Math.PI*2,true)
+    c.arc(373,464,14,Math.PI,false)
+    c.lineTo(387,520)
+    c.moveTo(359,464)
+    c.lineTo(359,518)
+    c.arc(373,517,14,Math.PI,Math.PI*2,true)
     c.font = "18px Arial";
-    c.fillText("0",372,484-14,10)
-    c.fillText("M",374,501-14,10)
-    c.fillText("u",374,514-14,10)
-    c.fillText("x",374,529-14,10)
-    c.fillText("1",372,543-14,10)
+    c.fillText("0",368,484-14,10)
+    c.fillText("M",370,501-14,10)
+    c.fillText("u",370,514-14,10)
+    c.fillText("x",370,529-14,10)
+    c.fillText("1",368,543-14,10)
     
+    
+    c.moveTo(387,489);
+    c.lineTo(396,489);
     c.stroke();
-    var a=new Arrow(396,489);
+    var a=new Arrow(396,493);
     Color_end();
 }
 // MUXIF(Color_Map.get(0));
@@ -157,7 +177,7 @@ function MUXIF(i){
 function control(i){
     Color(i);
     c.font = "18px Arial"
-    c.fillText("Controll",365,285,60)
+    c.fillText("Control",365,285,60)
     c.moveTo(427,277)
     c.ellipse(396,285,33,78,0,Math.PI*2,false);
     c.stroke();
@@ -178,19 +198,27 @@ function signExtendLW(i){
 }
 // signExtendLW(Color_Map.get(0));
 
-function signExtendLW_shift(i){
+function signExtendLW_shift1(i){
     //line from sign extend to shift
     Color(i);
     c.beginPath();
-    c.lineTo(567,621)
-    c.lineTo(567,195)
-    c.lineTo(571,195)
-    c.moveTo(531,614);
-    c.lineTo(543,628)
-    c.moveTo(568,622)
-    c.lineTo(515,622)
+    c.moveTo(515,622)
+    c.lineTo(568,622)
+    c.lineTo(568,537)
+    c.moveTo(530,615)
+    c.lineTo(541,627)
     c.font = "20px Arial"
     c.fillText("32",532,608,120)
+    c.stroke()
+    Color_end();
+}
+function signExtendLW_shift2(i){
+    //line from sign extend to shift
+    Color(i);
+    c.beginPath();
+    c.moveTo(568,537)
+    c.lineTo(568,194)
+    c.lineTo(572,194)
     c.stroke()
     var d=new Arrow(572,200);
     Color_end();
@@ -204,7 +232,7 @@ function signExtendLW_MUX(i){
     c.lineTo(580,535);
     c.stroke();
     var arrow=new Arrow(580,540);
-    var dot=new Dot(566,535);
+    var dot=new Dot(568,535);
     Color_end();
 }
 // signExtendLW_MUX(Color_Map.get(0));
@@ -251,8 +279,8 @@ function Controll_MUXIF(i){
     c.font="18px Arial";
     c.fillText("RegDst",442,210,120)
     c.beginPath();
-    c.moveTo(382,530);
-    c.lineTo(382,546);
+    c.moveTo(375,530);
+    c.lineTo(375,546);
     c.lineTo(225,546)
     c.lineTo(225,168)
     c.lineTo(430,168)
@@ -264,13 +292,22 @@ function Controll_MUXIF(i){
 }
 // Controll_MUXIF(Color_Map.get(0));
 
-function ReadData2_MUXID(i){
+function ReadData2_MUXID1(i){
     Color(i);
     //line from register to mux(from ID TO EX)
     c.beginPath();
     c.moveTo(541,485)
-    c.lineTo(580,485)
+    c.lineTo(551,485)
     
+    c.stroke()
+    Color_end();
+}
+function ReadData2_MUXID2(i){
+    Color(i);
+    //line from register to mux(from ID TO EX)
+    c.beginPath();
+    c.moveTo(551,485)
+    c.lineTo(580,485)
     c.stroke()
     var arrow = new Arrow(580,490)
     Color_end();
@@ -294,16 +331,13 @@ function Last5_(i){
     c.beginPath()
     c.font = "20px Arial"
     c.fillText("Instruction [5-0]",417,698,120)
-    c.moveTo(234,515);
-    c.lineTo(234,622)
-    c.lineTo(408,622)
-    // c.moveTo(408,622)
-    c.lineTo(408,705)
-    c.lineTo(580,706)
-    c.lineTo(580,631)
-    c.lineTo(589,631)
+    c.moveTo(408,622);
+    c.lineTo(408,707);
+    c.lineTo(578,707);
+    c.lineTo(579,630);
+    c.lineTo(594,630);
     c.stroke();
-    var arrow = new Arrow(589,635)
+    var arrow = new Arrow(594,635)
     var x=new Dot(408,622);
     c.font = "20px Arial"
     c.fillText("Instruction [5-0]",417,698,120)
@@ -553,11 +587,15 @@ function And(i){
     c.lineTo(753,232);
     c.stroke();
     c.beginPath();
-    c.arc(774,220,24,0.5*Math.PI, 1.5*Math.PI,true);
-    c.moveTo(774,196);
-    c.lineTo(753,196);
-    c.lineTo(753,244);
-    c.lineTo(774,244);
+    c.arc(770,220,20,0.5*Math.PI, 1.5*Math.PI,true);
+    c.moveTo(770,200);
+    c.lineTo(754,200);
+    c.lineTo(754,240);
+    c.lineTo(770,240);
+    c.moveTo(800,164);
+    c.lineTo(800,220);
+    c.lineTo(790,220);
+
 
     c.stroke();
     Color_end();
@@ -851,6 +889,9 @@ function Color(i){
         c.fillStyle = "blue";
     }
 
+}
+function Redraw(){
+    c.clearRect(0,0,canvas.width,canvas.height);
 }
 function Color_end(){
     c.strokeStyle = "Black";
