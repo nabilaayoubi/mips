@@ -1,116 +1,66 @@
 
-let myMap = new Map();
-myMap.set("add","add")
-myMap.set("addi","addi")
-myMap.set("sub","sub")
-myMap.set("lw","lw")
-myMap.set("sw" ,"sw")
-myMap.set("$s0",parseInt(document.getElementById("$s0").innerHTML))
-myMap.set("$s1",parseInt(document.getElementById("$s1").innerHTML))
-myMap.set("$s2",parseInt(document.getElementById("$s2").innerHTML))
-myMap.set("$s3",parseInt(document.getElementById("$s3").innerHTML))
-myMap.set("$s4",parseInt(document.getElementById("$s4").innerHTML))
-myMap.set("$s5",parseInt(document.getElementById("$s5").innerHTML))
-myMap.set("$s6",parseInt(document.getElementById("$s6").innerHTML))
-myMap.set("$s7",parseInt(document.getElementById("$s7").innerHTML))
+function draw(){
+  Control_(Color_Map.get("Control_"))
+  RS1_(Color_Map.get("RS1_"));
+  RS2_1(Color_Map.get("RS2_1"));
+  RS2_2(Color_Map.get("RS2_2"));
+  RD_(Color_Map.get("RD_"));
+  Last16_(Color_Map.get("Last16_"));
+  L16_(Color_Map.get("L16_"));
+  RS1_RS2_RD(Color_Map.get("RS1_RS2_RD"));
+  RS2_MUX(Color_Map.get("RS2_MUX"));
+  MUXIF(Color_Map.get("MUXIF"));
+  control(Color_Map.get("control"));
+  signExtendLW_shift1(Color_Map.get("signExtendLW_shift1"));
+  signExtendLW_shift2(Color_Map.get("signExtendLW_shift2"));
+  signExtendLW(Color_Map.get("signExtendLW"));
+  signExtendLW_MUX(Color_Map.get("signExtendLW_MUX"));
+  ReadData1_(Color_Map.get("ReadData1_"));
+  RegisterFile(Color_Map.get("RegisterFile"));
+  Controll_MUXIF(Color_Map.get("Controll_MUXIF"));
+  ReadData2_MUXID1(Color_Map.get("ReadData2_MUXID1"));
+  ReadData2_MUXID2(Color_Map.get("ReadData2_MUXID2"));
+  RegWrite(Color_Map.get("RegWrite")); 
+  Last5_(Color_Map.get("Last5_"));
+  ALUOp(Color_Map.get("ALUOp"));
+  Memory(Color_Map.get("Memory"));
+  ReadData_MUXMEM(Color_Map.get("ReadData_MUXMEM"));
+  MUXMEM(Color_Map.get("MUXMEM"));
+  MUXMEM_RegisterFile(Color_Map.get("MUXMEM_RegisterFile"));
+  ALUControl(Color_Map.get("ALUControl"));
+  MUXID(Color_Map.get("MUXID"));
+  MUXID_ALUEX(Color_Map.get("MUXID_ALUEX"))
+  ALUEX(Color_Map.get("ALUEX"));
+  ALUEX_Memory(Color_Map.get("ALUEX_Memory"));
+  MemWrite(Color_Map.get("MemWrite"));
+  MemtoReg(Color_Map.get("MemtoReg"));
+  ALUSrc(Color_Map.get("ALUSrc"));
+  And(Color_Map.get("And"));
+  Branch(Color_Map.get("Branch"));
+  ALUEX_MUXMEM(Color_Map.get("ALUEX_MUXMEM"));
+  WriteData_(Color_Map.get("WriteData_"));
+  MemRead(Color_Map.get("MemRead"));
+  BranchMUX_PC(Color_Map.get("BranchMUX_PC"));
+  MEMIF(Color_Map.get("MEMIF"));
+  Shift(Color_Map.get("Shift"));
+  _BranchALU(Color_Map.get("_BranchALU"))
+  BranchALU_BranchMUX(Color_Map.get("BranchALU_BranchMUX"));
+  BranchALU(Color_Map.get("BranchALU"));
+  BranchMUX(Color_Map.get("BranchMUX"));
+  Add_BranchMUX(Color_Map.get("Add_BranchMUX"));
+  Default4(Color_Map.get("Default4"));
+  Add(Color_Map.get("Add"));
+  PC_Add(Color_Map.get("PC_Add"));
+  PC_RegisterFile(Color_Map.get("PC_RegisterFile"));
+  PC(Color_Map.get("PC"));
 
+}
+//Color_Map.set("RS2_MUX",1)
 
-myMap.set("$t0",parseInt(document.getElementById("$t0").innerHTML))
-myMap.set("$t1",parseInt(document.getElementById("$t1").innerHTML))
-myMap.set("$t2",parseInt(document.getElementById("$t2").innerHTML))
-myMap.set("$t3",parseInt(document.getElementById("$t3").innerHTML))
-myMap.set("$t4",parseInt(document.getElementById("$t4").innerHTML))
-myMap.set("$t5",parseInt(document.getElementById("$t5").innerHTML))
-myMap.set("$t6",parseInt(document.getElementById("$t6").innerHTML))
-myMap.set("$t7",parseInt(document.getElementById("$t7").innerHTML))
-myMap.set("$t8",parseInt(document.getElementById("$t8").innerHTML))
-myMap.set("$t9",parseInt(document.getElementById("$t9").innerHTML))
-
-
-myMap.set("$a0",parseInt(document.getElementById("$a0").innerHTML))
-myMap.set("$a1",parseInt(document.getElementById("$a1").innerHTML))
-myMap.set("$a2",parseInt(document.getElementById("$a2").innerHTML))
-myMap.set("$a3",parseInt(document.getElementById("$a3").innerHTML))
-
-
-myMap.set("$v0",parseInt(document.getElementById("$v0").innerHTML))
-myMap.set("$v1",parseInt(document.getElementById("$v1").innerHTML))
-
-
-myMap.set("1",1)
-myMap.set("2",2)
-myMap.set("3",3)
-myMap.set("4",4)
-myMap.set("5",5)
-myMap.set("6",6)
-myMap.set("7",7)
-myMap.set("8",8)
-myMap.set("9",9)
-myMap.set("10",10)
-myMap.set("11",11)
-
-let B_Map = new Map();
-B_Map.set("add","10000")
-B_Map.set("addi","01000")
-B_Map.set("sub","10010")
-B_Map.set("lw","100011")
-B_Map.set("sw","101011")
-
-
-B_Map.set("$s0","10000")
-B_Map.set("$s1","10001")
-B_Map.set("$s2","10010")
-B_Map.set("$s3","10011")
-B_Map.set("$s4","10100")
-B_Map.set("$s5","10101")
-B_Map.set("$s6","10110")
-B_Map.set("$s7","10111")
-
-
-B_Map.set("$t0","01000")
-B_Map.set("$t1","01001")
-B_Map.set("$t2","01010")
-B_Map.set("$t3","01011")
-B_Map.set("$t4","01100")
-B_Map.set("$t5","01101")
-B_Map.set("$t6","01110")
-B_Map.set("$t7","01111")
-B_Map.set("$t8","11000")
-B_Map.set("$t9","11001")
-
-
-B_Map.set("$a0","00100")
-B_Map.set("$a1","00101")
-B_Map.set("$a2","00110")
-B_Map.set("$a3","00111")
-
-
-B_Map.set("$v0","00010")
-B_Map.set("$v1","00011")
-
-
-let Inst_Map = new Map();
-Inst_Map.set(1,0)
-Inst_Map.set("Stage",0)
-
-var LS_Map = new Map();
-LS_Map.set("$a0",0);
-LS_Map.set("$a1",0);
-LS_Map.set("$a2",0);
-LS_Map.set("$a3",0);
-
-var LV_Map = new Map();
-var a0 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var a1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var a2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var a3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-
-
-
-// let Color_Map = new Map();
-Color_Map.set("RS1_",0)
-Color_Map.set("RS2_",0)
+function Color_reset(){
+  Color_Map.set("RS1_",0)
+Color_Map.set("RS2_1",0)
+Color_Map.set("RS2_2",0)
 Color_Map.set("RD_",0)
 Color_Map.set("RS2_MUX",0)
 Color_Map.set("RS1_RS2_RD",0)
@@ -124,7 +74,8 @@ Color_Map.set("Control_",0)
 Color_Map.set("Controll_MUXIF",0)
 Color_Map.set("RegisterFile",0)
 Color_Map.set("ReadData1_",0)
-Color_Map.set("ReadData2_MUXID",0)
+Color_Map.set("ReadData2_MUXID1",0)
+Color_Map.set("ReadData2_MUXID2",0)
 Color_Map.set("MUXID",0)
 Color_Map.set("MUXIF",0)
 Color_Map.set("ALUEX",0)
@@ -133,6 +84,8 @@ Color_Map.set("MUXMEM",0)
 Color_Map.set("MUXMEM_RegisterFile",0)
 Color_Map.set("control",0)
 Color_Map.set("signExtendLW",0)
+Color_Map.set("signExtendLW_shift1",0)
+Color_Map.set("signExtendLW_shift2",0)
 Color_Map.set("Last5_",0)
 Color_Map.set("ALUOp",0)
 Color_Map.set("Memory",0)
@@ -161,6 +114,209 @@ Color_Map.set("Add",0)
 Color_Map.set("PC_Add",0)
 Color_Map.set("PC_RegisterFile",0)
 Color_Map.set("RegWrite",0)
-Color_Map.set("Last16_",1)
+Color_Map.set("ALUControl",0)
+Color_Map.set("signExtendLW_MUX",0)
+Color_Map.set("Last16_",0)
+Color_Map.set("L16_",0)
+
 Color_Map.set(0,0)
+// draw();
+}
+
+function Color_Instruction_Fetsh_R(){
+  Color_Map.set("control",1)
+  Color_Map.set("PC",1)
+  Color_Map.set("MEMIF",1)
+  Color_Map.set("PC_Add",1)
+  Color_Map.set("Default4",1)
+  Color_Map.set("Add_BranchMUX",1)
+  Color_Map.set("BranchMUX",1)
+  Color_Map.set("BranchMUX_PC",1)
+  Color_Map.set("Add",1)
+  Color_Map.set("PC_RegisterFile",1)
+  
+}
+function Color_Instruction_Decode_R(){
+  Color_Map.set("control",1)
+  Color_Map.set("RS1_",1)
+  Color_Map.set("RS2_1",1)
+  Color_Map.set("RS2_2",1)
+  Color_Map.set("RD_",1)
+  Color_Map.set("RS1_RS2_RD",1)
+  Color_Map.set("Control_",1)
+  Color_Map.set("Controll_MUXIF",1)
+  Color_Map.set("RegisterFile",1)
+  Color_Map.set("MUXIF",1)
+  Color_Map.set("Last5_",1)
+  Color_Map.set("Last16_",1)
+}
+function Color_Execution_R(){
+  Color_Map.set("control",1)
+  Color_Map.set("ReadData1_",1)
+  Color_Map.set("ReadData2_MUXID1",1)
+  Color_Map.set("ReadData2_MUXID2",1)
+  Color_Map.set("MUXID",1)
+  Color_Map.set("ALUEX",1)
+  Color_Map.set("MUXID_ALUEX",1)
+  Color_Map.set("ALUControl",1)
+  Color_Map.set("ALUOp",1)
+  Color_Map.set("ALUSrc",1)
+}
+function Color_WriteBack_R(){
+  Color_Map.set("control",1)
+  Color_Map.set("ALUEX_MUXMEM",1)
+  Color_Map.set("MUXMEM",1)
+  Color_Map.set("MUXMEM_RegisterFile",1)
+  Color_Map.set("MemtoReg",1)
+  Color_Map.set("RegWrite",1)
+}
+function Color_Instruction_Fetsh_I(){
+  Color_Map.set("MEMIF",1)
+  Color_Map.set("PC_Add",1)
+  Color_Map.set("Default4",1)
+  Color_Map.set("Add_BranchMUX",1)
+  Color_Map.set("BranchMUX",1)
+  Color_Map.set("BranchMUX_PC",1)
+  Color_Map.set("Add",1)
+  Color_Map.set("PC",1)
+  Color_Map.set("control",1)
+  Color_Map.set("PC_RegisterFile",1)
+}
+function Color_Instruction_Decode_I(){
+  Color_Map.set("RS1_",1)
+  Color_Map.set("RS2_1",1)
+  Color_Map.set("RS2_MUX",1)
+  Color_Map.set("RS1_RS2_RD",1)
+  Color_Map.set("signExtendLW",1)
+  Color_Map.set("RegisterFile",1)
+  Color_Map.set("Control_",1)
+  Color_Map.set("Controll_MUXIF",1)
+  Color_Map.set("MUXIF",1)
+  Color_Map.set("control",1)
+  Color_Map.set("RegWrite",1)
+  Color_Map.set("Last16_",1)
+  Color_Map.set("L16_",1)
+}
+function Color_Execution_I(){
+  Color_Map.set("signExtendLW_MUX",1)
+  Color_Map.set("signExtendLW_shift1",1)
+  Color_Map.set("ReadData1_",1)
+  Color_Map.set("MUXID",1)
+  Color_Map.set("ALUEX",1)
+  Color_Map.set("control",1)
+  Color_Map.set("MUXID_ALUEX",1)
+  Color_Map.set("ALUControl",1)
+  Color_Map.set("ALUOp",1)
+  Color_Map.set("ALUSrc",1)
+}
+function Color_WriteBack_I(){
+  Color_Map.set("ALUEX_MUXMEM",1)
+  Color_Map.set("MUXMEM",1)
+  Color_Map.set("MUXMEM_RegisterFile",1)
+  Color_Map.set("control",1)
+  Color_Map.set("MemtoReg",1)
+  Color_Map.set("ALUEX_MUXMEM",1)
+}
+function Color_Instruction_Fetsh_lw(){
+  Color_Map.set("MEMIF",1)
+  Color_Map.set("PC_Add",1)
+  Color_Map.set("Default4",1)
+  Color_Map.set("Add_BranchMUX",1)
+  Color_Map.set("BranchMUX",1)
+  Color_Map.set("BranchMUX_PC",1)
+  Color_Map.set("Add",1)
+  Color_Map.set("PC",1)
+  Color_Map.set("control",1)
+  Color_Map.set("PC_RegisterFile",1)
+}
+function Color_Instruction_Decode_lw(){
+  Color_Map.set("RS1_",1)
+  Color_Map.set("RS2_1",1)
+  Color_Map.set("RS2_MUX",1)
+  Color_Map.set("RS1_RS2_RD",1)
+  Color_Map.set("signExtendLW",1)
+  Color_Map.set("RegisterFile",1)
+  Color_Map.set("Control_",1)
+  Color_Map.set("Controll_MUXIF",1)
+  Color_Map.set("MUXIF",1)
+  Color_Map.set("control",1)
+  Color_Map.set("RegWrite",1)
+  Color_Map.set("Last16_",1)
+  Color_Map.set("L16_",1)
+}
+function Color_Execution_lw(){
+  Color_Map.set("signExtendLW_MUX",1)
+  Color_Map.set("signExtendLW_shift1",1)
+  Color_Map.set("ReadData1_",1)
+  Color_Map.set("MUXID",1)
+  Color_Map.set("ALUEX",1)
+  Color_Map.set("control",1)
+  Color_Map.set("MUXID_ALUEX",1)
+  Color_Map.set("ALUControl",1)
+  Color_Map.set("ALUOp",1)
+  Color_Map.set("ALUSrc",1)
+}
+function Color_Memory_lw(){
+  Color_Map.set("MemRead",1)
+  Color_Map.set("Memory",1)
+  Color_Map.set("ALUEX_Memory",1)
+  Color_Map.set("control",1)
+
+}
+function Color_WriteBack_lw(){
+  //Color_Map.set("ALUEX_MUXMEM",1)
+  Color_Map.set("MUXMEM",1)
+  Color_Map.set("MUXMEM_RegisterFile",1)
+  Color_Map.set("control",1)
+  Color_Map.set("MemtoReg",1)
+  Color_Map.set("ReadData_MUXMEM",1)
+  //Color_Map.set("ALUEX_MUXMEM",1)
+}
+function Color_Instruction_Fetsh_sw(){
+  Color_Map.set("MEMIF",1)
+  Color_Map.set("PC_Add",1)
+  Color_Map.set("Default4",1)
+  Color_Map.set("Add_BranchMUX",1)
+  Color_Map.set("BranchMUX",1)
+  Color_Map.set("BranchMUX_PC",1)
+  Color_Map.set("Add",1)
+  Color_Map.set("PC",1)
+  Color_Map.set("control",1)
+  Color_Map.set("PC_RegisterFile",1)
+}
+function Color_Instruction_Decode_sw(){
+  Color_Map.set("RS1_",1)
+  Color_Map.set("RS2_1",1)
+  Color_Map.set("RS2_2",1)
+  //Color_Map.set("RS2_MUX",1)
+  Color_Map.set("RS1_RS2_RD",1)
+  Color_Map.set("signExtendLW",1)
+  Color_Map.set("RegisterFile",1)
+  Color_Map.set("Control_",1)
+  //Color_Map.set("Controll_MUXIF",1)
+  //Color_Map.set("MUXIF",1)
+  Color_Map.set("control",1)
+  Color_Map.set("Last16_",1)
+  Color_Map.set("L16_",1)
+}
+function Color_Execution_sw(){
+  Color_Map.set("signExtendLW_MUX",1)
+  Color_Map.set("signExtendLW_shift1",1)
+  Color_Map.set("ReadData1_",1)
+  Color_Map.set("MUXID",1)
+  Color_Map.set("ALUEX",1)
+  Color_Map.set("control",1)
+  Color_Map.set("MUXID_ALUEX",1)
+  Color_Map.set("ALUControl",1)
+  Color_Map.set("ALUOp",1)
+  Color_Map.set("ALUSrc",1)
+}
+function Color_Memory_sw(){
+  Color_Map.set("Memory",1)
+  Color_Map.set("ALUEX_Memory",1)
+  Color_Map.set("ReadData2_MUXID1",1)
+  Color_Map.set("WriteData_",1)
+  Color_Map.set("MemWrite",1)
+  Color_Map.set("control",1)
+}
 
