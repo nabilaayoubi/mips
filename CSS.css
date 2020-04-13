@@ -1,20 +1,32 @@
+.logo{
+    /* width: 1000px;
+    height:100px; */
+    background-size:100%;
+    background-position: center;
+    margin-left: 700px;
+    margin-right: 700px;
+    margin-top: -850px;
+}
 .outputText{
-    margin-left: 40%;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 2px;
+    width: 160px;
+    height: 900px; 
+    border: 1px ;
+    margin-left: 40px;
+    margin-top: 500px;
+    padding: 10px 10px;
+    float: left;
      
 }
 
 .outputText #outputArea{
-    width: 260px;
-    height: 25px;
-    padding-left: 5px;
-    border-radius: 25px;
+    max-width: 280px;
+    border: 1px solid black;
 }
 
-.outputText label:hover{
-    color: red;
+.outputText  label{
+    max-width: 80px;
+    display: block;
+    margin-bottom: 2px;
 }
 
 .outputText, .inputText label{
@@ -23,20 +35,22 @@
 }
 
 .inputText{
-    width: 150px;
+    width: 160px;
     /* height: 1000px;  */
     border: 1px ;
-    margin-left: 50px;
-    margin-top: 50px;
-    padding: 10px10px;
+    margin-left: -170px;
+    margin-top: 150px;
+    padding: 10px 10px;
     float: left;
     
 }
 
 .inputText #inputArea{
-    max-width: 200px;
+    max-width: 270px;
+    max-height: 240px;
     border: 1px solid black;
     /* display: inline; */
+    font-size: xx-large;
 }
 
 .inputText label{
@@ -44,15 +58,49 @@
     display: block;
     margin-bottom: 2px;
 }
+
 canvas{
     margin-right: 0px;
-    max-width: 980px; 
-    max-height: 900px;
-    margin: 0px;
-    margin-left: 120px;
+    max-width: 1000px; 
+    max-height: 950px;
+    margin-top: 150px;
+    margin-left: 300px;
     padding: 0px;
 }
 
 .Table{
     float: right;
+    margin-top: -700px;
+}
+.Firstbutton{
+   
+    margin-left:1000px;
+    margin-top:-50px;
+    
+
+}
+.Nextbutton{
+    margin-left:1120px;
+    margin-top:-50px;
+    
+}
+.Previousbutton{
+    margin-left:1060px;
+    margin-top:-50px;
+    
+}
+.Lastbutton{
+    margin-left:1180px;
+    margin-top:-50px;
+    
+}
+.Startbutton{
+    margin-left:800px;
+    margin-top:650px;
+    
+}
+.FullDatapath{
+    margin-left:900px;
+    margin-top:-50px;
+    
 }
