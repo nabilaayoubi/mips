@@ -52,7 +52,12 @@ function draw(){
   PC_Add(Color_Map.get("PC_Add"));
   PC_RegisterFile(Color_Map.get("PC_RegisterFile"));
   PC(Color_Map.get("PC"));
-
+  Inst_memory_Arrow(Color_Map.get("Inst_memory_Arrow"));
+  Ellipse_Branch(Color_Map.get("Ellipse_Branch"));
+  Shift2_Result(Color_Map.get("Shift2_Result"));
+  Branch_Mux(Color_Map.get("Branch_Mux"));
+  Branch_MUX1_Result(Color_Map.get("Branch_MUX1_Result"));
+  PC_Add_Result_Branch(Color_Map.get("PC_Add_Result_Branch"));
 }
 //Color_Map.set("RS2_MUX",1)
 
@@ -117,6 +122,9 @@ Color_Map.set("ALUControl",0)
 Color_Map.set("signExtendLW_MUX",0)
 Color_Map.set("Last16_",0)
 Color_Map.set("L16_",0)
+Color_Map.set("Branch_MUX1_Result",0)
+Color_Map.set("Branch_Mux",0)
+
 
 Color_Map.set(0,0)
 // draw();
@@ -133,6 +141,8 @@ function Color_Instruction_Fetsh_R(){
   Color_Map.set("BranchMUX_PC",1)
   Color_Map.set("Add",1)
   Color_Map.set("PC_RegisterFile",1)
+  Color_Map.set("Branch_MUX1_Result",1)
+  Color_Map.set("Branch_Mux",1)
   
 }
 function Color_Instruction_Decode_R(){
@@ -180,6 +190,8 @@ function Color_Instruction_Fetsh_I(){
   Color_Map.set("PC",1)
   Color_Map.set("control",1)
   Color_Map.set("PC_RegisterFile",1)
+  // Color_Map.set("Branch_MUX1_Result",1)
+  // Color_Map.set("Branch_Mux",1)
 }
 function Color_Instruction_Decode_I(){
   Color_Map.set("RS1_",1)
@@ -227,6 +239,8 @@ function Color_Instruction_Fetsh_lw(){
   Color_Map.set("PC",1)
   Color_Map.set("control",1)
   Color_Map.set("PC_RegisterFile",1)
+  Color_Map.set("Branch_MUX1_Result",1)
+  Color_Map.set("Branch_Mux",1)
 }
 function Color_Instruction_Decode_lw(){
   Color_Map.set("RS1_",1)
@@ -282,6 +296,8 @@ function Color_Instruction_Fetsh_sw(){
   Color_Map.set("PC",1)
   Color_Map.set("control",1)
   Color_Map.set("PC_RegisterFile",1)
+  Color_Map.set("Branch_MUX1_Result",1)
+  Color_Map.set("Branch_Mux",1)
 }
 function Color_Instruction_Decode_sw(){
   Color_Map.set("RS1_",1)
