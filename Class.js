@@ -332,8 +332,8 @@ class InstructionDraw_IFormat {
   }
   First(){
     this.stageNumber=1;
-    InstructionFetch();
     Redraw();
+    InstructionFetch();
     Color_Instruction_Fetsh_I();
     draw();
     Color_reset();
