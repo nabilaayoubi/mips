@@ -1,7 +1,7 @@
 .logo{
-    /* width: 1000px;
-    height:100px; */
-    background-size:100%;
+    width: 1000px;
+    height:100px;
+    background-size:40%;
     background-position: center;
     margin-left: 700px;
     margin-right: 700px;
@@ -62,7 +62,7 @@
 canvas{
     margin-right: 0px;
     max-width: 1000px; 
-    max-height: 950px;
+    max-height: 1000px;
     margin-top: 150px;
     margin-left: 300px;
     padding: 0px;
@@ -70,37 +70,37 @@ canvas{
 
 .Table{
     float: right;
-    margin-top: -700px;
+    margin-top: -737px;
 }
 .Firstbutton{
    
-    margin-left:1000px;
+    margin-left:835px;
     margin-top:-50px;
     
 
 }
 .Nextbutton{
-    margin-left:1120px;
+    margin-left:945px;
     margin-top:-50px;
     
 }
 .Previousbutton{
-    margin-left:1060px;
+    margin-left:890px;
     margin-top:-50px;
     
 }
 .Lastbutton{
-    margin-left:1180px;
+    margin-left:1000px;
     margin-top:-50px;
     
 }
 .Startbutton{
-    margin-left:800px;
-    margin-top:650px;
+    margin-left:750px;
+    margin-top:750px;
     
 }
 .FullDatapath{
-    margin-left:900px;
+    margin-left:1057px;
     margin-top:-50px;
     
 }
