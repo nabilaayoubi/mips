@@ -274,21 +274,19 @@ function RegisterFile(i){
 // RegisterFile(Color_Map.get(0));
 
 function Controll_MUXIF(i){
-    //line from mux to control in IF
-    Color(i);
-    c.font="18px Arial";
-    c.fillText("RegDst",442,210,120)
-    c.beginPath();
-    c.moveTo(375,530);
-    c.lineTo(375,546);
-    c.lineTo(225,546)
-    c.lineTo(225,168)
-    c.lineTo(430,168)
-    c.lineTo(430,216)
-    c.lineTo(414,216)
-    
-    c.stroke()
-    Color_end();
+  //line from mux to control in IF
+  Color(i);
+  c.font="18px Arial";
+  c.fillText("RegDst",407,185,120)
+  c.beginPath();
+  c.moveTo(375,530);
+  c.lineTo(375,546);
+  c.lineTo(225,546)
+  c.lineTo(225,168)
+  c.lineTo(398,168)
+  c.lineTo(398,208);
+  c.stroke()
+  Color_end();
 }
 // Controll_MUXIF(Color_Map.get(0));
 
@@ -670,9 +668,9 @@ function BranchMUX_PC(i){
     c.moveTo(52,407);
     c.lineTo(46,407);
     c.lineTo(46,20);
-    c.lineTo(833,20);
-    c.lineTo(833,113);
-    c.lineTo(812,113);
+    c.lineTo(910,20);
+    c.lineTo(910,113);
+    c.lineTo(878,113);
     // c.strokeStyle = 'black';
     c.stroke();
     var dd=new Arrow(52,412);
@@ -726,14 +724,14 @@ function Add(i){
     c.beginPath();
     c.moveTo(164,49);
     c.lineTo(164,96);
-    c.lineTo(180,113);
+    c.lineTo(177,113);
     c.lineTo(167,130);
     c.lineTo(167,178);
-    c.lineTo(221,145);
-    c.lineTo(221,82);
+    c.lineTo(213,145);
+    c.lineTo(213,82);
     c.lineTo(164,49);
     c.font = "15px Arial";
-    c.fillText("Add", 185, 120);
+    c.fillText("Add", 179, 120);
     c.stroke();
     Color_end(); 
 }
@@ -755,7 +753,7 @@ function Default4(i){
 function Add_BranchMUX(i){
     Color(i);
     c.beginPath();
-    c.moveTo(221,113);
+    c.moveTo(214,113);
     c.lineTo(545,113);
     c.lineTo(545,102);
     c.stroke();
@@ -769,6 +767,7 @@ function Add_BranchMUX(i){
     var xx=new Dot(545,102);
     Color_end();
 }
+
 // Add_BranchMUX(Color_Map.get(0));
 
 // MUX1
@@ -822,6 +821,7 @@ function BranchALU(i){
     Color_end();
 }
 // BranchALU(Color_Map.get(0));
+
 
 function BranchALU_BranchMUX(i){
     Color(i);
@@ -882,7 +882,266 @@ function MEMIF(i){
         Color_end()
 }
 // MEMIF(Color_Map.get(0));
+function InstructionFetch(){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(41,790);
+    c.font = "25px Arial";
+    c.fillText("Instruction Fetch",41,790,2000);
+    c.stroke();
+    Color_end();
+}
+function InstructionDecode(){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(300,790);
+    c.font = "25px Arial";
+    c.fillText("Instruction Decode",300,790,2000);
+    c.stroke();
+    Color_end();
+}
+function ExecutionD(){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(578,790);
+    c.font = "25px Arial";
+    c.fillText("Execution",578,790,2000);
+    c.stroke();
+    Color_end();
+}
+function MemoryD(){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(737,790);
+    c.font = "25px Arial";
+    c.fillText("Memory",737,790,2000);
+    c.stroke();
+    Color_end();
+}
+function WriteBackD(){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(870,790);
+    c.font = "25px Arial";
+    c.fillText("Write Back",870,790,2000);
+    c.stroke();
+    Color_end();
+}
+function drawOpRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(244,296);
+    c.font = "16px Arial";
+    c.fillText(val,244,296,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRsRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(244,410);
+    c.font = "16px Arial";
+    c.fillText(val,244,410,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRtRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(244,450);
+    c.font = "16px Arial";
+    c.fillText(val,244,450,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRdRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(244,530);
+    c.font = "16px Arial";
+    c.fillText(val,244,530,2000);
+    c.stroke();
+    Color_end();
+}
+function drawfunctRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(421,723);
+    c.font = "16px Arial";
+    c.fillText(val,421,723,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRsVal(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(640,425);
+    c.font = "20px Arial";
+    c.fillText(val,640,425,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRtVal(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(640,516);
+    c.font = "20px Arial";
+    c.fillText(val,640,516,2000);
+    c.stroke();
+    Color_end();
+}
+function drawRtVal1(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(742,590);
+    c.font = "20px Arial";
+    c.fillText(val,742,590,2000);
+    c.stroke();
+    Color_end();
+}
+function drawWBresult1(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(889,555);
+    c.font = "20px Arial";
+    c.fillText(val,889,555,2000);
+    c.stroke();
+    Color_end();
+}
+function drawWBresult2(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(377,555);
+    c.font = "20px Arial";
+    c.fillText(val,377,555,2000);
+    c.stroke();
+    Color_end();
+}
+function drawWBresult3(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(879,502);
+    c.font = "20px Arial";
+    c.fillText(val,879,502,2000);
+    c.stroke();
+    Color_end();
+}
+function drawCstRep(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(240,645);
+    c.font = "16px Arial";
+    c.fillText(val,240,645,2000);
+    c.stroke();
+    Color_end();
+}
+function Inst_memory_Arrow(i){
+    Color(i);
+    Dot(220,463);
+    c.beginPath();
+    c.moveTo(220,463);
+    c.lineTo(220,53);
+    c.lineTo(318,53);
+    c.stroke();
+    Arrow(318,58);
+    c.beginPath();
+    c.moveTo(304,47);
+    c.lineTo(316,60);
+    c.font = "16px Arial";
+    c.fillText("26",305,76,1000);
+    c.font="13px Arial";
+    c.fillText("Instruction [25-0]", 207, 42, 2000);
+    c.stroke();
+    Color_end();
+}
+//Inst_memory_Arrow();
 
+function Ellipse_Branch(i){
+    Color(i);
+    c.beginPath();
+    c.ellipse(348.5,55,22,27,2*Math.PI, 0, 360, false);
+    c.font = "13px Arial";
+    c.fillText("Shift", 334,48,1000);
+    c.fillText("left 2", 334,65,1000);
+    c.stroke();
+    Color_end();
+}
+//Ellipse_Branch();
+
+function Shift2_Result(i){
+    Color(i);
+    c.beginPath();
+    c.moveTo(370,53);
+    c.lineTo(828,52);
+    c.lineTo(828,83);
+    c.lineTo(840,83);
+    c.moveTo(377,45);
+    c.lineTo(389,60);
+    c.font = "16px Arial";
+    c.fillText("28",380,76,1000);
+    c.font ="13px Arial";
+    c.fillText("Jump Address [31-0]",382,42,2000);
+    c.stroke();
+    Arrow(840,88);
+    Color_end();
+}
+function Branch_Mux(i){
+    Color(i);
+    c.beginPath();
+    c.arc(863,79,14,0,Math.PI, true);
+    c.stroke();
+    c.beginPath();
+    c.moveTo(849.5,79);
+    c.lineTo(849.5,144);
+    c.stroke();
+    c.beginPath();
+    c.arc(863,144,14,0,Math.PI, false);
+    c.moveTo(877,144);
+    c.lineTo(877,79);
+    c.font = "19px Arial";
+    c.fillText("1", 858,84);
+    c.font = "17px Arial";
+    c.fillText("M",858,99);
+    c.fillText("U", 858, 116);
+    c.fillText("X", 858, 132);
+    c.font= "19px Arial";
+    c.fillText("0", 858, 152);
+    c.stroke();
+    //MUX Signal
+    c.beginPath();
+    c.moveTo(863,66);
+    c.lineTo(863,36);
+    c.lineTo(525,36);
+    c.lineTo(525,213);
+    c.lineTo(407.5,213);
+    c.font = "18px Arial";
+    c.fillText("Jump",415,207,1000);
+    c.font="14px Arial";
+    c.fillText("PC+4 [31-28]",438,80,2000);
+    c.stroke();
+    Color_end();
+}
+function Branch_MUX1_Result(i){
+    Color(i);
+    c.beginPath();
+    c.moveTo(810,145);
+    c.lineTo(842,145);
+    c.stroke();
+    Arrow(842,150);
+    Color_end();
+}
+//Branch_MUX1_Result();
+function PC_Add_Result_Branch(i){
+    Color(i);
+    c.beginPath();
+    c.moveTo(298,113);
+    c.lineTo(298,91);
+    c.lineTo(431,91);
+    c.lineTo(431,53);
+    c.stroke();
+    Dot(298,113);
+    Color_end();
+}
 function Color(i){
     if(i==1){
         c.strokeStyle = "blue";
@@ -890,6 +1149,11 @@ function Color(i){
     }
 
 }
+function ColorRed(){
+        c.strokeStyle = "red";
+        c.fillStyle = "red";
+}
+
 function Redraw(){
     c.clearRect(0,0,canvas.width,canvas.height);
 }
