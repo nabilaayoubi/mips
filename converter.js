@@ -4,9 +4,19 @@ var stringOutput ="";
 var arrayInput  = [];
 var ArrayInput =[[]];
 var stringInput="";
+var IsInst;
 draw();
-var add_inst,addi_inst,sub_inst, or_inst,and_inst,nor_inst,slt_inst,sll_inst,srl_inst,andi_inst,ori_inst,slti_inst;
-function convert(current_Inst){
+var add_inst,addi_inst,sub_inst, or_inst,and_inst,nor_inst,slt_inst,sll_inst,srl_inst,andi_inst,ori_inst,slti_inst,beq_inst,jump_inst;
+
+
+
+function convert(current_Inst,IsInstrucion = true){
+    IsInst = IsInstrucion;
+    if (current_Inst >=1 && IsInst){
+        if(arrayInput[0] != "beq" && arrayInput[0] != "j"){
+    inst.to_table();}}
+    let block = document.getElementById("Button");
+    block.disabled = true;
     var Inst_number =1;
     arrayInput =[]
     stringInput = document.getElementById("inputArea").value;
@@ -20,7 +30,7 @@ function convert(current_Inst){
         }
         
         i=0;
-        console.log(Inst_number)
+
         if(Inst_number==current_Inst+1){
             if(Inst_number==1){
             Inst_Map.set(1,Inst_Map.get(1)-1)
@@ -31,10 +41,29 @@ function convert(current_Inst){
                     i++;
                 }
                 arrayInput.push(elem)   
-            }}
+            }
+            if (arrayInput[0] == "sw" || arrayInput[0] == "lw"){
+                document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"(" + arrayInput[3] +")";
+            }
+            else{
+                if(arrayInput[0] == "j"){
+                    document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1]
+                }
+            else{document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"," + arrayInput[3];}
+}
+        }
             else{Inst_Map.set(1,Inst_Map.get(1)-1)
-                console.log(ArrayInput[Inst_number-1])
-            arrayInput = ArrayInput[Inst_number-1]}
+
+            arrayInput = ArrayInput[Inst_number-1]
+            if (arrayInput[0] == "sw" || arrayInput[0] == "lw"){
+                document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"(" + arrayInput[3] +")";
+            }
+            else{
+                if(arrayInput[0] == "j"){
+                    document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1]
+                }
+            else{document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"," + arrayInput[3];}
+}}
         }
         else {
             if(ArrayInput.length == 1){
@@ -57,10 +86,22 @@ function convert(current_Inst){
                 i++
                 ArrayInput[j] = temp;
             }}
-        arrayInput =[];
-        arrayInput = ArrayInput[current_Inst]}
+            arrayInput =[];
 
-    // console.log(Inst_Map.get(1))
+            arrayInput = ArrayInput[current_Inst]            ;
+            if (arrayInput[0] == "sw" || arrayInput[0] == "lw"){
+                document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"(" + arrayInput[3] +")";
+            }
+            else{
+                if(arrayInput[0] == "j"){
+                    document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1]
+                }
+            else{document.getElementById("outputInst").value =arrayInput[0] + " "+ arrayInput[1] + "," + arrayInput[2] +"," + arrayInput[3];}
+}
+
+}
+
+
     // for(var i=0;i< stringInput.length;i++){
     //     var elem ="";
     //     while(stringInput[i] != " "&& i<stringInput.length){
@@ -69,7 +110,7 @@ function convert(current_Inst){
     //     }
     //     arrayInput.push(elem);
     // }
-    console.log(arrayInput)
+
     funct=myMap.get(arrayInput[0]);
     if(funct=="add" || funct=="sub" || funct=="and" || funct=="or"|| funct=="nor"||
     funct=="slt" ||funct=="sll" ||funct=="srl"){
@@ -84,7 +125,20 @@ function convert(current_Inst){
     else if(funct=="sw"){
       inst= new InstructionDraw_SW();
     }
-    console.log(inst.getstageNumber());
+    else if(funct=="j"){
+        inst= new InstructionDraw_J();
+      }
+      else if(funct=="beq"){
+        inst= new InstructionDraw_Beq();
+      }
+    else if(funct != "j" && funct != "beq"){
+        Inst_Map.set(1,Inst_Map.get(1)+1);
+        IsInst = false;
+        console.log(current_Inst)
+        convert(Inst_Map.get(1),IsInst);
+        return
+    }
+
     // ---------------------------------------------------------------------------------------
     //                                       Add instruction
     // ---------------------------------------------------------------------------------------
@@ -102,12 +156,12 @@ function convert(current_Inst){
         inst.setrsVal(myMap.get(arrayInput[2]));
         inst.setrtVal(myMap.get(arrayInput[3]));
         inst.setWBresult(myMap.get(arrayInput[1]));
-        document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+        
         document.getElementById("outputArea").value = stringOutput     
         Inst_Map.set(1,Inst_Map.get(1)+1);
         draw();
     }
-    console.log(inst)
+
     // --------------------------------------------------------------------------------------
     //                                        Sub instruction
     // --------------------------------------------------------------------------------------
@@ -127,7 +181,7 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setrtVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -157,7 +211,6 @@ function convert(current_Inst){
         inst.setrtVal(myMap.get(arrayInput[3]));
         inst.setWBresult(myMap.get(arrayInput[1]));
 
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -186,7 +239,7 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setrtVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -222,13 +275,13 @@ function convert(current_Inst){
                 BinaryRd+='0';
             }
         }
-        console.log(BinaryRd);
+
 
        myMap.set(arrayInput[1],  parseInt(BinaryRd,2).toString(10))
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setrtVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -255,7 +308,6 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
         inst.setrtVal(myMap.get(arrayInput[3]));
         inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -280,7 +332,6 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setrtVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -305,7 +356,6 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setrtVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -319,7 +369,7 @@ function convert(current_Inst){
         c.clearRect(0,0,canvas.width,canvas.height)
         Color_reset();
         stringOutput ="I-Format"+ '\n'+ "rs:"+ arrayInput[2]+ " , "+"rt:"+arrayInput[1]+" , "+"constant:"+arrayInput[3]+'\n'+ B_Map.get(arrayInput[0])+ " " + B_Map.get(arrayInput[2]) +" "+ B_Map.get(arrayInput[1]) +" "+ myMap.get(arrayInput[3]).toString(2).padStart(16,"0");
-        // console.log(stringOutput)
+
         inst.setopRep(B_Map.get(arrayInput[0]));
         inst.setrsRep(B_Map.get(arrayInput[2]));
         inst.setrtRep(B_Map.get(arrayInput[1]));
@@ -328,11 +378,11 @@ function convert(current_Inst){
        inst.setrsVal(myMap.get(arrayInput[2]));
        inst.setcstVal(myMap.get(arrayInput[3]));
        inst.setWBresult(myMap.get(arrayInput[1]));
-       document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+       
 
        document.getElementById("outputArea").value = stringOutput
        Inst_Map.set(1,Inst_Map.get(1)+1);
-    //    console.log(Inst_Map.get(1))
+
     draw();
     }
      // ---------------------------------------------------------------------------------------
@@ -349,7 +399,7 @@ function convert(current_Inst){
         inst.setrsVal(myMap.get(arrayInput[3]));
         inst.setcstVal(myMap.get(arrayInput[2]));
         inst.setWBresult(myMap.get(arrayInput[1]));
-        document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
         document.getElementById("outputArea").value= stringOutput
         Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -364,19 +414,17 @@ function convert(current_Inst){
         stringOutput ="I-Format"+ '\n'+ "rs:"+ arrayInput[3]+ " , "+"rt:"+arrayInput[1]+" , "+"constant:"+arrayInput[2]+'\n'+ B_Map.get(arrayInput[0]) +" "+ B_Map.get(arrayInput[3]) +" "
                     +B_Map.get(arrayInput[1])+" "+myMap.get(arrayInput[2]).toString(2).padStart(16,"0")
         
-                    console.log((4* arrayInput[2]+LS_Map.get(arrayInput[3])));
+
         inst.setopRep(B_Map.get(arrayInput[0]));
         inst.setrsRep(B_Map.get(arrayInput[3]));
         inst.setrtRep(B_Map.get(arrayInput[1]));
         inst.setcstRep(myMap.get(arrayInput[2]).toString(2).padStart(16,"0"));
         set_reg(myMap.get(arrayInput[2]),myMap.get(arrayInput[1]))
         
-        LS_Map.set(arrayInput[3], LS_Map.get(arrayInput[3])+4* arrayInput[2]);
+        LS_Map.set(arrayInput[3],4* arrayInput[2]);
         inst.setrsVal(myMap.get(arrayInput[3]));
         inst.setcstVal(myMap.get(arrayInput[2]));
         inst.setrtVal(myMap.get(arrayInput[1]));
-        document.getElementById(arrayInput[3]).innerHTML ="0x" +
-                                    (LS_Map.get(arrayInput[3])).toString().padStart(8,"0"); 
 
         document.getElementById("outputArea").value= stringOutput
         Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -407,7 +455,7 @@ function convert(current_Inst){
      inst.setrsVal(myMap.get(arrayInput[2]));
      inst.setcstVal(myMap.get(arrayInput[3]));
      inst.setWBresult(myMap.get(arrayInput[1]));
-     document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
      document.getElementById("outputArea").value = stringOutput
      Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -437,7 +485,7 @@ function convert(current_Inst){
      inst.setrsVal(myMap.get(arrayInput[2]));
      inst.setcstVal(myMap.get(arrayInput[3]));
      inst.setWBresult(myMap.get(arrayInput[1]));
-     document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
      document.getElementById("outputArea").value = stringOutput
      Inst_Map.set(1,Inst_Map.get(1)+1);
@@ -463,12 +511,68 @@ function convert(current_Inst){
      inst.setrsVal(myMap.get(arrayInput[2]));
      inst.setcstVal(myMap.get(arrayInput[3]));
      inst.setWBresult(myMap.get(arrayInput[1]));
-     document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+
 
      document.getElementById("outputArea").value = stringOutput
      Inst_Map.set(1,Inst_Map.get(1)+1);
      draw();
   }
+  // --------------------------------------------------------------------------------------
+    //                                        beq instruction
+    // --------------------------------------------------------------------------------------
+
+  function beq_instruction(){
+      IsInst = false;
+    stringOutput ="I-Format"+ '\n'+ "rs:"+ arrayInput[1]+ " , "+"rt:"+arrayInput[2]+" , "+"constant:"+arrayInput[3]+'\n'+ B_Map.get(arrayInput[0])+ " " + B_Map.get(arrayInput[1]) +" "+ B_Map.get(arrayInput[2]) +" "+ myMap.get(arrayInput[3]).toString(2).padStart(16,"0");
+
+      if (myMap.get(arrayInput[1]) == myMap.get(arrayInput[2])){
+    Inst_Map.set(1,Inst_Map.get(1) + myMap.get(arrayInput[3]))}
+    else{
+        Inst_Map.set(1,Inst_Map.get(1)+1);   
+    }
+    var temp;
+    if(myMap.get(arrayInput[1]) == myMap.get(arrayInput[2])){
+        temp="1";
+    }
+    else{
+        temp="0";
+    }
+    inst.setopRep(B_Map.get(arrayInput[0]));
+    inst.setrsRep(B_Map.get(arrayInput[1]));
+    inst.setrtRep(B_Map.get(arrayInput[2]));
+    inst.setResultVal(temp);
+    inst.setAfterShift((arrayInput[3]*4).toString(10));
+    inst.setcstRep(myMap.get(arrayInput[3]).toString(2).padStart(16,"0"));
+    inst.setrsVal(myMap.get(arrayInput[1]));
+    inst.setrtVal(myMap.get(arrayInput[2]));
+    document.getElementById("outputArea").value = stringOutput;
+    Redraw();
+      Color_reset();
+      draw();
+}
+
+
+  // --------------------------------------------------------------------------------------
+    //                                        jump instruction
+    // --------------------------------------------------------------------------------------
+    function jump_instruction(){
+        stringOutput ="J-Format"+'\n'+ B_Map.get(arrayInput[0])+" "+ current_Inst.toString(2).padStart(26,"0");
+        inst.setopRep(B_Map.get(arrayInput[0]));
+        var temp = 0;
+        var temp2 = arrayInput[1] + ":";
+        while(temp <ArrayInput.length){
+            //console.log("ali")
+            if (ArrayInput[temp][0] == temp2){
+                Inst_Map.set(1,temp);
+                convert(temp);
+            }
+            temp ++;
+        }
+        document.getElementById("outputArea").value = stringOutput;
+    Redraw();
+      Color_reset();
+      draw();
+    }
     function choose_inst(){
         switch(myMap.get(arrayInput[0])){
             case "add": add_inst = add_instruction(); break;
@@ -485,6 +589,8 @@ function convert(current_Inst){
             case "slti":slti_inst=slti_instruction(); break;
             case "ori": ori_inst=ori_instruction();break;
             case "andi": andi_inst=andi_instruction();break;
+            case "beq": beq_inst=beq_instruction();break;
+            case "j": jump_inst=jump_instruction();break;
 
         }        
     }
