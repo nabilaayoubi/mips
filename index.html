@@ -5,32 +5,33 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Mips</title>
       <link rel="stylesheet" href="CSS.css">
-      <style>
-        canvas{
-          width: 1200px;
-          height: 700px;
-        }
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        table{
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-      </style>
+      
   </head>
 
+
   <body>
+  <header>
+    <nav>
+    <ul>
+    <li> <a href="index.html">Home</a></li>
+    <li> <a href="aboutUs.html">AboutUs</a></li>
+    <li> <a href="knownIssues.html">KnownIssues</a></li>
+    </ul>
+    </nav>
+  </header>
+  <h1 style="color:red; font-size:50px;font-family:courier;text-align:center;"><b><i>MIPS SIMULATOR</i></b></h1>
     <div class = "outputText">
+      
+ 
+      <!-- <label for ="outputInst">Current Instruction</label> -->
+      <label for ="outputInst">Current Instruction</label>
+      <textarea name="outputInst" id="outputInst" cols="70" rows="2"  disabled></textarea>
+
+       <button  onclick="convert(Inst_Map.get(1))" id="start"  style="width:80px;height:50px; display:inline-block">Next Instruction</button>
+
+        <!-- <button  onclick="TheFull_Datapath()" id="full"  style="width:80px;height:50px;">Full Datapath</button> -->
       <label for="outputArea">Output</label>
-      <textarea name="outputArea" id="outputArea" cols="70" rows="15"  disabled></textarea>
+      <textarea name="outputArea" id="outputArea" cols="70" rows="5"  disabled></textarea>
       <!-- <input type="text" name = "outputArea" id = "outputArea" value="" disabled> -->
     </div>
     
@@ -43,26 +44,30 @@
       <canvas></canvas>
     </div>
     
-    <div class="logo">
-      <img src="https://lh5.googleusercontent.com/lhzUEH_FXMT97UIyaY2qXrGPE210vKXfySBlDp3lY7z2FRVWGY1RhTl6XC82fVs3oRkrrwNS5SNhOQRBpPMUvRAj7kLqzijDJu0-0yAVdxp6Gpho2Q=w1280" style="width:500px;height:160px;"/>
-    </div>
     <div class="Startbutton">
-      <button  onclick="ReStart()" id="start"  style="width:80px;height:50px;">Next Instruction</button>
-    </div>
+
+      <button  onclick="FirstStage()" id="first"  style="width:50px;height:50px;">&#8249;&#8249;</button>    </div>
+
     <div class="FullDatapath">
-      <button  onclick="TheFull_Datapath()" id="full"  style="width:80px;height:50px;">Full Datapath</button>
-    </div>
-   <div class="Firstbutton">
-     <button  onclick="FirstStage()" id="first"  style="width:50px;height:50px;">&#8249;&#8249;</button>
-   </div>
-   <div class="Nextbutton">
-    <button  onclick="NextStage()" id="next"  style="width:50px;height:50px;">&#8250;</button>
-  </div>
-   <div class="Previousbutton">
-    <button onclick=" PreviousStage()" id="previous" style="width:50px;height:50px;">&#8249;</button>
-  </div>
-  <div class="Lastbutton">
-   <button onclick=" LastStage()" id="last" style="width:50px;height:50px;">&#8250;&#8250;</button>
+              <button  onclick="TheFull_Datapath()" id="full"  style="width:80px;height:50px;">Full Datapath</button>
+
+            </div>
+            <div class="Firstbutton">
+              <!-- <button onclick=" LastStage()" id="last" style="width:50px;height:50px;">&#8250;&#8250;</button> -->
+              
+              <!-- <button  onclick="FirstStage()" id="first"  style="width:50px;height:50px;">&#8249;&#8249;</button> -->
+            </div>
+            <div class="Nextbutton">
+              <button  onclick="NextStage()" id="next"  style="width:50px;height:50px;">&#8250;</button>
+            </div>
+
+      <div class="Previousbutton">
+              <button onclick=" PreviousStage()" id="previous" style="width:50px;height:50px;">&#8249;</button>
+            </div>
+
+      <div class="Lastbutton">
+              
+              <button onclick=" LastStage()" id="last" style="width:50px;height:50px;">&#8250;&#8250;</button>
  </div>
     
     
@@ -214,4 +219,11 @@
       
     </body>
     </html>
-   
+    <!-- 
+    addi $t1,$t2,5
+    add $t2,$t1,$t1
+    sub $t3,$t2,$t1
+    mult $t4,$t3,$t3
+    div $t5,$t2,$t3
+    sw $t2,4($a3)
+    lw $t7,4($a3) -->
