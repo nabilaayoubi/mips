@@ -1,5 +1,6 @@
 class InstructionDraw_RFormat {
     constructor() {
+      this.done = false;
       this.stageNumber=0;
       this.opRep="";
       this.rsRep="";
@@ -9,6 +10,7 @@ class InstructionDraw_RFormat {
       this.rsVal="";
       this.rtVal="";
       this.WBresult="";
+      this.old_value = document.getElementById(arrayInput[1]).innerHTML;
       }
     getstageNumber(){
       return this.stageNumber;
@@ -101,6 +103,8 @@ class InstructionDraw_RFormat {
       drawWBresult2(this.getWBresult());
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+      this.done = true;
       }
     }
     Previous(){
@@ -113,6 +117,8 @@ class InstructionDraw_RFormat {
         Color_Execution_R();
         draw();
         Color_reset();
+        document.getElementById(arrayInput[1]).innerHTML = this.old_value;
+        this.done = false;
       }
       else if(this.stageNumber==2){
         this.stageNumber-=1;
@@ -156,6 +162,8 @@ class InstructionDraw_RFormat {
       Color_WriteBack_R();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+      this.done = true;
     }
     First(){
       this.stageNumber=1;
@@ -164,6 +172,8 @@ class InstructionDraw_RFormat {
       Color_Instruction_Fetsh_R();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML = this.old_value;
+      this.done =false;
     }
     Last(){
     this.stageNumber=3;
@@ -174,13 +184,20 @@ class InstructionDraw_RFormat {
     Color_WriteBack_R();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+    this.done = true;
     }
     Start(){
       this.stageNumber=0;
     }
+    to_table(){
+      if (this.done == false){
+      document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])}
+    }
 }
 class InstructionDraw_IFormat {
   constructor() {
+    this.done = false;
     this.stageNumber=0;
     this.opRep="";
     this.rsRep="";
@@ -189,7 +206,7 @@ class InstructionDraw_IFormat {
     this.rsVal="";
     this.cstVal="";
     this.WBresult="";
-
+    this.old_value = document.getElementById(arrayInput[1]).innerHTML;
   }
   getstageNumber(){
     return this.stageNumber;
@@ -275,6 +292,8 @@ class InstructionDraw_IFormat {
     Color_WriteBack_I();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+    this.done = true;
     }
   }
   Previous(){
@@ -287,6 +306,8 @@ class InstructionDraw_IFormat {
       Color_Execution_I();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML = this.old_value;
+      this.done = false;
     }
     else if(this.stageNumber==2){
       this.stageNumber-=1;
@@ -329,6 +350,8 @@ class InstructionDraw_IFormat {
       Color_WriteBack_I();
       draw();
       Color_reset()
+      document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+      this.done = true;
   }
   First(){
     this.stageNumber=1;
@@ -337,6 +360,7 @@ class InstructionDraw_IFormat {
     Color_Instruction_Fetsh_I();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML = this.old_value;
   }
   Last(){
     this.stageNumber=3;
@@ -347,13 +371,20 @@ class InstructionDraw_IFormat {
     Color_WriteBack_I();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+    this.done = true;
   }
   Start(){
     this.stageNumber=0;
   }
+  to_table(){
+    if(this.done == false){
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])}
+  }
 }
 class InstructionDraw_LW {
   constructor(){
+    this.done = false;
     this.stageNumber=0;
     this.opRep="";
     this.rsRep="";
@@ -362,6 +393,7 @@ class InstructionDraw_LW {
     this.rsVal="";
     this.cstVal="";
     this.WBresult="";
+    this.old_value = document.getElementById(arrayInput[1]).innerHTML;
   }
   getstageNumber(){
     return this.stageNumber;
@@ -455,6 +487,8 @@ class InstructionDraw_LW {
       Color_WriteBack_lw();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])
+      this.done = true;
     }
   }
   Previous(){
@@ -465,6 +499,8 @@ class InstructionDraw_LW {
       Color_Memory_lw();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[1]).innerHTML = this.old_value;
+      this.done = false;
     }
     else if(this.stageNumber==3){
       this.stageNumber-=1;
@@ -519,6 +555,8 @@ class InstructionDraw_LW {
     Color_WriteBack_lw();
     draw();
     Color_reset()
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+    this.done = true;
   }
   First(){
     this.stageNumber=1;
@@ -527,6 +565,8 @@ class InstructionDraw_LW {
     Color_Instruction_Fetsh_lw();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML = this.old_value;
+    this.done = false;
   }
   Last(){
     this.stageNumber=4;
@@ -537,13 +577,20 @@ class InstructionDraw_LW {
     Color_WriteBack_lw();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1]);
+    this.done = true;
   }
   Start(){
     this.stageNumber=0;
   }
+  to_table(){
+    if(this.done == false){
+    document.getElementById(arrayInput[1]).innerHTML =myMap.get(arrayInput[1])}
+  }
 }
 class InstructionDraw_SW {
   constructor(){
+    this.done = false;
     this.stageNumber=0;
     this.opRep="";
     this.rsRep="";
@@ -552,6 +599,7 @@ class InstructionDraw_SW {
     this.rsVal="";
     this.cstVal="";
     this.rtVal="";
+    this.old_value = document.getElementById(arrayInput[3]).innerHTML;
   }
   getstageNumber(){
     return this.stageNumber;
@@ -637,6 +685,9 @@ class InstructionDraw_SW {
     Color_Memory_sw();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[3]).innerHTML ="0x" +
+    (LS_Map.get(arrayInput[3])).toString().padStart(8,"0"); 
+    this.done = true;
     }
   }
   Previous(){
@@ -650,6 +701,8 @@ class InstructionDraw_SW {
       Color_Execution_sw();
       draw();
       Color_reset();
+      document.getElementById(arrayInput[3]).innerHTML = this.old_value;
+      this.done = false;
     }
     else if(this.stageNumber==2){
       this.stageNumber-=1;
@@ -679,6 +732,8 @@ class InstructionDraw_SW {
     Color_Instruction_Fetsh_sw();
     draw();
     Color_reset();
+    document.getElementById(arrayInput[3]).innerHTML = this.old_value;
+    this.done = false;
   }
   Last(){
     this.stageNumber=3;
@@ -688,6 +743,9 @@ class InstructionDraw_SW {
     drawRtVal1(this.getrtVal());
     draw();
     Color_reset();
+    document.getElementById(arrayInput[3]).innerHTML ="0x" +
+    (LS_Map.get(arrayInput[3])).toString().padStart(8,"0"); 
+    this.done = true;
   }
   Full_Datapath(){
     Redraw();
@@ -708,8 +766,241 @@ class InstructionDraw_SW {
     Color_Memory_sw();
     draw();
     Color_reset()
+    document.getElementById(arrayInput[3]).innerHTML ="0x" +
+    (LS_Map.get(arrayInput[3])).toString().padStart(8,"0"); 
+    this.done = true;
   }
   Start(){
     this.stageNumber=0;
   }
+  to_table(){
+    if(this.done == false){
+    document.getElementById(arrayInput[3]).innerHTML ="0x" +
+    (LS_Map.get(arrayInput[3])).toString().padStart(8,"0");   }
+  }
+}
+class InstructionDraw_J{
+  constructor(){
+    this.stageNumber=0;
+    this.opRep="";
+      }
+  setopRep(x){
+    this.opRep=x;
+  }
+  getopRep(){
+     return this.opRep;
+  }
+      Next(){
+        if(this.stageNumber==0){
+          this.stageNumber+=1;
+          Redraw();
+          InstructionFetch();
+          Color_Instruction_Fetch_J();
+          draw();
+          Color_reset();
+        }
+        else if(this.stageNumber==1){
+          Redraw();
+          InstructionDecode();
+          Color_Instruction_Decode_J();
+          drawOpRep(this.getopRep());
+          draw();
+          Color_reset();
+        }
+      }
+      Previous(){
+        if(this.stageNumber==1){
+          this.stageNumber-=1;
+          Redraw();
+          InstructionFetch();
+          Color_Instruction_Fetch_J();
+          draw();
+          Color_reset();
+        }
+      }
+      Full_Datapath(){
+        Redraw();
+          InstructionFetch();
+          Color_Instruction_Fetch_J();
+          InstructionDecode();
+          drawOpRep(this.getopRep());
+          Color_Instruction_Decode_J();
+          draw();
+          Color_reset();
+      }
+      First(){
+        this.stageNumber=0;
+        Redraw();
+        InstructionFetch();
+        Color_Instruction_Fetch_J();
+        draw();
+        Color_reset();
+      }
+      Last(){
+        this.stageNumber=2;
+        Redraw();
+          InstructionDecode();
+          drawOpRep(this.getopRep());
+          Color_Instruction_Decode_J();
+          draw();
+          Color_reset();
+      }
+}
+class InstructionDraw_Beq{
+  constructor(){
+    this.stageNumber=0;
+    this.opRep="";
+    this.rsRep="";
+    this.rtRep="";
+    this.cstRep="";
+    this.rsVal="";
+    this.rtVal="";
+    this.ResultVal="";
+    this.AfterShift="";
+  }
+  getstageNumber(){
+    return this.stageNumber;
+  }
+  setopRep(x){
+    this.opRep=x;
+  }
+  setResultVal(x){
+    this.ResultVal=x;
+  }
+  setAfterShift(x){
+    this.AfterShift=x;
+  }
+  setrsRep(x){
+   this.rsRep=x;
+  }
+  setrtRep(x){
+    this.rtRep=x;
+  }
+  setrsVal(x){
+    this.rsVal=x;
+  }
+  setrtVal(x){
+    this.rtVal=x;
+  }
+  setcstRep(x){
+    this.cstRep=x;
+  }
+  getopRep(){
+    return this.opRep;
+  }
+  getrsRep(){
+    return this.rsRep;
+  }
+  getrtRep(){
+    return this.rtRep;
+  }
+  getcstRep(){
+    return this.cstRep;
+  }
+  getrsVal(){
+    return this.rsVal;
+  }
+  getrtVal(){
+    return this.rtVal;
+  }
+  getResultVal(){
+    return this.ResultVal;
+  }
+  getAfterShift(){
+    return this.AfterShift;
+  }
+  Next(){
+    if(this.stageNumber==0){
+      this.stageNumber+=1;
+      Redraw();
+      InstructionFetch();
+      Color_Instruction_Fetsh_Beq();
+      draw();
+      Color_reset();
+    }
+    else if(this.stageNumber==1){
+      this.stageNumber+=1;
+      Redraw();
+      InstructionDecode();
+      drawOpRep(this.getopRep());
+      drawRsRep(this.getrsRep());
+      drawRtRep(this.getrtRep());
+      drawCstRep(this.getcstRep());
+      Color_Instruction_Decode_Beq();
+      draw();
+      Color_reset();
+    }
+    else if(this.stageNumber==2){
+      Redraw();
+      ExecutionD();
+      drawRsVal(this.getrsVal());
+      drawRtVal(this.getrtVal());
+      drawResultVal(this.getResultVal());
+      drawAfterShift(this.getAfterShift());
+      Color_Execution_Beq();
+      draw();
+      Color_reset();
+    }
+  }
+  Previous(){
+    if(this.stageNumber==2){
+      this.stageNumber-=1;
+      Redraw();
+      InstructionDecode();
+      Color_Instruction_Decode_Beq();
+      drawOpRep(this.getopRep());
+      drawRsRep(this.getrsRep());
+      drawRtRep(this.getrtRep());
+      drawCstRep(this.getcstRep());
+      draw();
+      Color_reset();
+    }
+    else if(this.stageNumber==1){
+      this.stageNumber-=1;
+      Redraw();
+      InstructionFetch();
+      Color_Instruction_Fetsh_Beq();
+      draw();
+      Color_reset();
+    }
+}
+First(){
+  Redraw();
+    this.stageNumber=0;
+    InstructionFetch();
+    Color_Instruction_Fetsh_Beq();
+    draw();
+    Color_reset();
+}
+Last(){
+  this.stageNumber=2;
+    Redraw();
+    ExecutionD();
+    drawRsVal(this.getrsVal());
+    drawRtVal1(this.getrtVal());
+    drawResultVal(this.getResultVal());
+    drawAfterShift(this.getAfterShift());
+    Color_Execution_Beq();
+    draw();
+    Color_reset();
+}
+Full_Datapath(){
+  Redraw();
+  InstructionFetch();
+  Color_Instruction_Fetsh_Beq();
+  InstructionDecode();
+  drawOpRep(this.getopRep());
+  drawRsRep(this.getrsRep());
+  drawRtRep(this.getrtRep());
+  drawCstRep(this.getcstRep());
+  drawResultVal(this.getResultVal());
+  drawAfterShift(this.getAfterShift());
+  Color_Instruction_Decode_Beq();
+  drawRsVal(this.getrsVal());
+  drawRtVal(this.getrtVal());
+  ExecutionD();
+  Color_Execution_Beq();
+  draw();
+  Color_reset();
+}
 }
