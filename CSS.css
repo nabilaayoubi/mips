@@ -1,12 +1,118 @@
-.logo{
-    width: 1000px;
+canvas{
+    width: 1200px;
+    height: 700px;
+  }
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+}
+table{
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+h1{
+    background-color:silver;
+    text-indent: 3%;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    margin-top: 0px;
+    padding-bottom: 20px;
+}
+header{
+    
+    /* text-align: right; */
+    background: lightgray;
+    padding: 5px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+li{
+    display: inline-block;
+    margin-right: 20px;
+  }
+ul{
+    margin: 0;
+    padding: 59;
+    list-style-type: none;
+  }
+.nabila{
+    width: 200px;
     height:100px;
     background-size:40%;
     background-position: center;
-    margin-left: 700px;
-    margin-right: 700px;
-    margin-top: -850px;
+    margin-left: 70px;
+    margin-right: 80px;
+    margin-top:-800px;
+   
 }
+.chayma{
+    width: 200px;
+    height:100px;
+    background-size:40%;
+    background-position: center;
+    margin-left: 450px;
+    margin-right: 60px;
+    margin-top:-100px;
+   
+}
+.samah{
+    width: 200px;
+    height:100px;
+    background-size:40%;
+    background-position: center;
+    margin-left: 800px;
+    margin-right: 50px;
+    margin-top:-100px;
+   
+}
+.mazloum{
+    width: 200px;
+    height:100px;
+    background-size:40%;
+    background-position: center;
+    margin-left: 1200px;
+    margin-right: 450px;
+    margin-top:-100px;
+   
+}
+h2{
+    /* width: 100px;
+    height:100px; */
+    background-position: center;  
+    margin-left: 100px;
+    margin-right: 100px;
+    /* margin-top:100px; */
+} 
+p{
+    width: 1300px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-position: center;  
+    margin-left:100px;
+    margin-right: 500px;
+    margin-top:20px;
+    text-align-last: auto;
+    text-align: justify;
+}
+figcaption{
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+img{
+    border-radius: 50%;
+}
+
+
 .outputText{
     width: 160px;
     height: 900px; 
@@ -23,8 +129,17 @@
     border: 1px solid black;
 }
 
+.outputText #outputInst{
+    /* margin-top: -60px; */
+    max-width: 280px;
+    border: 1px solid black;
+    font-size: xx-large;
+    color: blue;
+    
+}
+
 .outputText  label{
-    max-width: 80px;
+    max-width: 1300px;
     display: block;
     margin-bottom: 2px;
 }
@@ -39,7 +154,7 @@
     /* height: 1000px;  */
     border: 1px ;
     margin-left: -170px;
-    margin-top: 150px;
+    margin-top: 88px;
     padding: 10px 10px;
     float: left;
     
@@ -63,42 +178,45 @@ canvas{
     margin-right: 0px;
     max-width: 1000px; 
     max-height: 1000px;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 300px;
     padding: 0px;
 }
 
 .Table{
     float: right;
-    margin-top: -737px;
+    margin-top: -800px;
 }
 .Firstbutton{
-   
-    margin-left:835px;
-    margin-top:-50px;
+    margin-left:820px;
+    margin-top:-500px;
     
 
 }
 .Nextbutton{
-    margin-left:945px;
-    margin-top:-50px;
+    margin-left:910px;
+    margin-top: 450px;
     
 }
 .Previousbutton{
-    margin-left:890px;
+    margin-left:805px;
     margin-top:-50px;
     
 }
 .Lastbutton{
-    margin-left:1000px;
+    margin-left:965px;
     margin-top:-50px;
     
 }
 .Startbutton{
     margin-left:750px;
-    margin-top:750px;
+    margin-top:50px;
     
 }
+#start{
+    /* float: left; */
+}
+
 .FullDatapath{
     margin-left:1057px;
     margin-top:-50px;
