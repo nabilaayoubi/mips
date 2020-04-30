@@ -750,10 +750,10 @@ function Default4(i){
 }
 // Default4(Color_Map.get(0));
 //ALU PC4 result
-function Add_BranchMUX(i){
+function Add_BranchMUX2(i){
     Color(i);
     c.beginPath();
-    c.moveTo(214,113);
+    c.moveTo(297,113);
     c.lineTo(545,113);
     c.lineTo(545,102);
     c.stroke();
@@ -765,6 +765,14 @@ function Add_BranchMUX(i){
     c.stroke();
     var ss=new Arrow(776,81.5);
     var xx=new Dot(545,102);
+    Color_end();
+}
+function Add_BranchMUX1(i){
+    Color(i);
+    c.beginPath();
+    c.moveTo(214,113);
+    c.lineTo(297,113);
+    c.stroke();
     Color_end();
 }
 
@@ -1032,6 +1040,24 @@ function drawCstRep(val){
     c.moveTo(240,645);
     c.font = "16px Arial";
     c.fillText(val,240,645,2000);
+    c.stroke();
+    Color_end();
+}
+function drawResultVal(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(727,428);
+    c.font = "16px Arial";
+    c.fillText(val,727,428,2000);
+    c.stroke();
+    Color_end();
+}
+function drawAfterShift(val){
+    ColorRed();
+    c.beginPath();
+    c.moveTo(632,212);
+    c.font = "16px Arial";
+    c.fillText(val,632,212,2000);
     c.stroke();
     Color_end();
 }
